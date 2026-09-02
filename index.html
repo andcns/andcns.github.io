@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090b10" />
+    <meta
+      name="description"
+      content="Andrei Purcăreață — technical artist working across procedural systems, realtime 3D and artist-facing workflows."
+    />
+    <title>Andrei Purcăreață — Technical Artist</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./content/portfolio.js" defer></script>
+    <script src="./site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#selected-work">Skip to selected work</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Andrei Purcăreață — back to top">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="./assets/brand/logo-board.png" alt="" />
+        </span>
+        <span class="brand-name">Andrei Purcăreață</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#selected-work">Selected work</a>
+        <a href="#other-work">Other work</a>
+        <a href="./devlogs/">Devlogs</a>
+        <a href="#about">About</a>
+        <a class="nav-cv" href="./assets/files/Andrei-Purcareata-CV.pdf">CV <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="intro shell" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <p class="technical-label"><span>Portfolio / 2026</span><span>London, UK</span></p>
+          <h1 id="intro-title">Technical artist building <em>procedural systems</em> and realtime worlds.</h1>
+          <p class="intro-summary">I bridge art production and technical problem-solving, with a growing focus on PCG and artist-facing workflows.</p>
+        </div>
+        <div class="intro-signal" aria-hidden="true">
+          <span class="signal-node signal-node-a"></span>
+          <span class="signal-line"></span>
+          <span class="signal-node signal-node-b"></span>
+        </div>
+      </section>
+
+      <section class="section shell" id="selected-work" aria-labelledby="selected-title">
+        <header class="section-header">
+          <p class="section-index">01</p>
+          <div>
+            <p class="technical-label">Portfolio</p>
+            <h2 id="selected-title">Selected work</h2>
+          </div>
+          <p class="section-note">Five focused case studies showing finished work, technical decisions and what I personally owned.</p>
+        </header>
+        <div class="selected-grid" id="selected-grid"></div>
+      </section>
+
+      <section class="shell devlog-callout-wrap" aria-label="Current development">
+        <a class="devlog-callout" href="./devlogs/">
+          <span class="devlog-visual" aria-hidden="true">
+            <span class="terrain-line terrain-line-a"></span>
+            <span class="terrain-line terrain-line-b"></span>
+            <span class="terrain-line terrain-line-c"></span>
+          </span>
+          <span class="devlog-copy">
+            <span class="technical-label">Currently building / Active development</span>
+            <strong>Romanian Countryside PCG</strong>
+            <span>Follow the development <b aria-hidden="true">↗</b></span>
+          </span>
+        </a>
+      </section>
+
+      <section class="section shell" id="other-work" aria-labelledby="other-title">
+        <header class="section-header section-header-compact">
+          <p class="section-index">02</p>
+          <div>
+            <p class="technical-label">Supporting practice</p>
+            <h2 id="other-title">Other work</h2>
+          </div>
+          <p class="section-note">Smaller studies and production contributions that broaden the picture without pretending every piece needs a full case study.</p>
+        </header>
+        <div class="other-grid" id="other-grid"></div>
+      </section>
+
+      <section class="section shell about" id="about" aria-labelledby="about-title">
+        <header class="section-header">
+          <p class="section-index">03</p>
+          <div>
+            <p class="technical-label">Profile</p>
+            <h2 id="about-title">About</h2>
+          </div>
+        </header>
+        <div class="about-grid">
+          <p class="about-lead">I’m Andrei, a recent Games Design &amp; Development graduate moving toward Technical Art and procedural content generation.</p>
+          <div class="about-copy">
+            <p>My background covers characters, environments, UI, VFX and engine implementation. The work I enjoy most sits between disciplines: turning visual problems into controllable systems that make production faster and more flexible.</p>
+            <p>I’m currently based in London and looking for junior Technical Art, realtime 3D and adjacent production roles across the UK.</p>
+            <div class="about-links">
+              <a href="mailto:andreipurcareata@gmail.com">Email <span aria-hidden="true">↗</span></a>
+              <a href="https://www.linkedin.com/in/andreicns">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a href="https://www.artstation.com/andreicns">ArtStation <span aria-hidden="true">↗</span></a>
+              <a href="./assets/files/Andrei-Purcareata-CV.pdf">Download CV <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <span>Andrei Purcăreață</span>
+      <span>Technical Art · PCG · Realtime 3D</span>
+      <span>© 2026</span>
+    </footer>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="Close case study">Close <span aria-hidden="true">×</span></button>
+      <div class="dialog-scroll">
+        <div class="dialog-hero" id="dialog-hero"></div>
+        <article class="dialog-content shell">
+          <p class="technical-label" id="dialog-label"></p>
+          <h2 id="dialog-title"></h2>
+          <p class="dialog-summary" id="dialog-summary"></p>
+          <dl class="dialog-meta" id="dialog-meta"></dl>
+          <div class="dialog-placeholder">
+            <p class="technical-label">Case study / Next implementation pass</p>
+            <p>The full visual breakdown, problem, solution and contribution sections will be assembled with you project by project.</p>
+          </div>
+        </article>
+      </div>
+    </dialog>
+  </body>
+</html>
