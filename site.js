@@ -4,8 +4,11 @@
   const otherGrid = document.querySelector("#other-grid");
   const dialog = document.querySelector("#project-dialog");
   const closeButton = document.querySelector(".dialog-close");
+  const dialogScroll = document.querySelector(".dialog-scroll");
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector("#site-nav");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let closeTimer;
 
   function projectMedia(project, className) {
     if (project.image) {
@@ -62,8 +65,17 @@
       <div><dt>Tools</dt><dd>${project.tools}</dd></div>
       <div><dt>Outcome</dt><dd>${project.outcome}</dd></div>`;
 
+    window.clearTimeout(closeTimer);
+    dialog.classList.remove("is-visible");
+    dialogScroll.scrollTop = 0;
+
     if (!dialog.open) dialog.showModal();
     document.body.classList.add("dialog-open");
+
+    requestAnimationFrame(() => {
+      dialogScroll.scrollTop = 0;
+      dialog.classList.add("is-visible");
+    });
 
     if (updateHistory) {
       const url = new URL(window.location.href);
@@ -73,8 +85,15 @@
   }
 
   function closeProject(updateHistory = true) {
-    if (dialog.open) dialog.close();
-    document.body.classList.remove("dialog-open");
+    if (!dialog.open) return;
+
+    dialog.classList.remove("is-visible");
+    window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(() => {
+      if (dialog.open) dialog.close();
+      document.body.classList.remove("dialog-open");
+      dialogScroll.scrollTop = 0;
+    }, reducedMotion.matches ? 0 : 500);
 
     if (updateHistory) {
       const url = new URL(window.location.href);

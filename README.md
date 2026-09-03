@@ -1,4 +1,4 @@
-# Andrei Purcăreață — portfolio website
+# Andrei-Constantin Purcăreață — portfolio website
 
 Static portfolio website prepared for GitHub Pages. The website repository contains presentation material only; source game repositories remain private.
 
@@ -25,6 +25,7 @@ Add only media that is safe to publish. Never copy raw project folders, paid ass
 
 - Homepage hierarchy and responsive layout implemented.
 - Selected projects open in a full-screen case-study preview.
+- Case-study previews always open at the top and use smooth enter/exit motion.
 - Shareable `?project=project-slug` state implemented.
 - Romanian PCG devlog route created.
 - Full case-study content and real CyberShadows/Romanian PCG media remain to be added.
