@@ -9,9 +9,9 @@
       content="Andrei-Constantin Purcăreață — technical artist working across procedural systems, realtime 3D and artist-facing workflows."
     />
     <title>Andrei-Constantin Purcăreață — Technical Artist</title>
-    <link rel="stylesheet" href="./styles.css?v=6" />
-    <script src="./content/portfolio.js?v=6" defer></script>
-    <script src="./site.js?v=6" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=10" />
+    <script src="./content/portfolio.js?v=10" defer></script>
+    <script src="./site.js?v=10" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#selected-work">Skip to selected work</a>
@@ -47,10 +47,29 @@
           <h1 id="intro-title">Technical artist building <em>procedural systems</em> and realtime worlds.</h1>
           <p class="intro-summary">I bridge art production and technical problem-solving, with a growing focus on PCG and artist-facing workflows.</p>
         </div>
-        <div class="intro-signal" aria-hidden="true">
-          <span class="signal-node signal-node-a"></span>
-          <span class="signal-line"></span>
-          <span class="signal-node signal-node-b"></span>
+        <div class="intro-signal shader-graph" aria-hidden="true">
+          <svg class="shader-links" viewBox="0 0 740 460" preserveAspectRatio="none">
+            <path class="shader-link shader-link-copper" d="M340 48 C438 48 452 229 540 229"></path>
+            <path class="shader-link shader-link-violet" d="M420 440 C500 440 472 259 540 259"></path>
+          </svg>
+
+          <span class="shader-node shader-node-noise">
+            <span class="shader-node-title">Noise Texture</span>
+            <span class="shader-node-row"><i class="shader-socket socket-input"></i>Scale <b>5.0</b><i class="shader-socket socket-output socket-copper"></i></span>
+            <span class="shader-node-row"><i class="shader-socket socket-input"></i>Detail <b>2.0</b><i class="shader-socket socket-output socket-grey"></i></span>
+          </span>
+
+          <span class="shader-node shader-node-range">
+            <span class="shader-node-title">Map Range</span>
+            <span class="shader-node-row"><i class="shader-socket socket-input socket-violet"></i>Value <b>0.62</b></span>
+            <span class="shader-node-row"><i class="shader-socket socket-input"></i>Result<i class="shader-socket socket-output socket-violet"></i></span>
+          </span>
+
+          <span class="shader-node shader-node-output">
+            <span class="shader-node-title shader-node-title-output">Material Output</span>
+            <span class="shader-node-row"><i class="shader-socket socket-input socket-copper"></i>Surface</span>
+            <span class="shader-node-row"><i class="shader-socket socket-input socket-violet"></i>Displacement</span>
+          </span>
         </div>
       </section>
 

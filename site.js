@@ -20,7 +20,14 @@
     return `
       <button class="zoomable-image ${className}" type="button" data-zoom-src="${imagePath}" data-zoom-caption="${title}" aria-label="Enlarge ${title} image">
         <img src="${imagePath}" alt="${title}" loading="lazy" />
-        <span class="zoom-hint" aria-hidden="true">Expand ↗</span>
+        <span class="zoom-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <circle cx="10.5" cy="10.5" r="6.5"></circle>
+            <path d="M15.5 15.5 20 20"></path>
+            <path d="M10.5 7.5v6M7.5 10.5h6"></path>
+          </svg>
+          <span>Zoom</span>
+        </span>
       </button>`;
   }
 
