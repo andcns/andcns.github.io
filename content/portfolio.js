@@ -58,13 +58,23 @@ window.PORTFOLIO_CONTENT = {
       title: "Houdini Reactor Fracture HDA",
       label: "Procedural tool study",
       contribution: "Built a reusable fracture workflow with exposed artist controls and tested it through Houdini Engine in Unreal.",
-      image: "./assets/images/houdini/hda.webp"
+      image: "./assets/images/houdini/hda.webp",
+      images: [
+        "./assets/images/houdini/hda.webp",
+        "./assets/images/houdini/crack-network.webp",
+        "./assets/images/houdini/unreal.webp"
+      ]
     },
     {
       title: "Egyptian VR Puzzle Environment",
       label: "Environment support · 72-hour turnaround",
       contribution: "Produced modular architecture and reusable decorative elements for an active VR puzzle project.",
-      image: "./assets/images/egyptian-vr/lobby.webp"
+      image: "./assets/images/egyptian-vr/lobby.webp",
+      images: [
+        "./assets/images/egyptian-vr/lobby.webp",
+        "./assets/images/egyptian-vr/chamber.webp",
+        "./assets/images/egyptian-vr/gallery.webp"
+      ]
     }
   ]
 };

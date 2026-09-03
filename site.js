@@ -11,11 +11,23 @@
   const assetPrefix = document.body.dataset.assetPrefix || ".";
   let closeTimer;
 
-  function projectMedia(project, className) {
+  function resolveImagePath(path) {
+    return path.startsWith("./") ? `${assetPrefix}${path.slice(1)}` : path;
+  }
+
+  function zoomableMedia(path, title, className = "") {
+    const imagePath = resolveImagePath(path);
+    return `
+      <button class="zoomable-image ${className}" type="button" data-zoom-src="${imagePath}" data-zoom-caption="${title}" aria-label="Enlarge ${title} image">
+        <img src="${imagePath}" alt="${title}" loading="lazy" />
+        <span class="zoom-hint" aria-hidden="true">Expand ↗</span>
+      </button>`;
+  }
+
+  function projectMedia(project, className, zoomable = false) {
     if (project.image) {
-      const imagePath = project.image.startsWith("./")
-        ? `${assetPrefix}${project.image.slice(1)}`
-        : project.image;
+      const imagePath = resolveImagePath(project.image);
+      if (zoomable) return zoomableMedia(project.image, `${project.title} project preview`, className);
       return `<img src="${imagePath}" alt="${project.title} project preview" loading="lazy" />`;
     }
 
@@ -45,9 +57,14 @@
   }
 
   function otherCard(project) {
+    const images = project.images || (project.image ? [project.image] : []);
+    const gallery = images
+      .map((image, index) => zoomableMedia(image, `${project.title} — image ${index + 1}`))
+      .join("");
+
     return `
       <article class="other-card">
-        <div class="other-media">${projectMedia(project)}</div>
+        <div class="other-gallery">${gallery}</div>
         <div class="other-copy">
           <p class="technical-label">${project.label}</p>
           <h3>${project.title}</h3>
@@ -61,7 +78,7 @@
     const project = content.selectedWork.find((item) => item.slug === slug);
     if (!project) return;
 
-    document.querySelector("#dialog-hero").innerHTML = projectMedia(project, "dialog-pending");
+    document.querySelector("#dialog-hero").innerHTML = projectMedia(project, "dialog-pending", true);
     document.querySelector("#dialog-label").textContent = project.label;
     document.querySelector("#dialog-title").textContent = project.title;
     document.querySelector("#dialog-summary").textContent = project.summary;
@@ -155,4 +172,57 @@
       nav.classList.remove("site-nav-open");
     });
   }
+
+  const lightbox = document.createElement("dialog");
+  lightbox.className = "image-lightbox";
+  lightbox.setAttribute("aria-label", "Expanded project image");
+  lightbox.innerHTML = `
+    <button class="lightbox-close" type="button" aria-label="Close expanded image">Close <span aria-hidden="true">×</span></button>
+    <figure class="lightbox-figure">
+      <img src="" alt="" />
+      <figcaption></figcaption>
+    </figure>`;
+  document.body.append(lightbox);
+
+  const lightboxImage = lightbox.querySelector("img");
+  const lightboxCaption = lightbox.querySelector("figcaption");
+  const lightboxClose = lightbox.querySelector(".lightbox-close");
+  let lightboxTimer;
+
+  function openLightbox(source, caption) {
+    window.clearTimeout(lightboxTimer);
+    lightboxImage.src = source;
+    lightboxImage.alt = caption;
+    lightboxCaption.textContent = caption;
+    if (!lightbox.open) lightbox.showModal();
+    document.body.classList.add("lightbox-open");
+    requestAnimationFrame(() => lightbox.classList.add("is-visible"));
+  }
+
+  function closeLightbox() {
+    if (!lightbox.open) return;
+    lightbox.classList.remove("is-visible");
+    window.clearTimeout(lightboxTimer);
+    lightboxTimer = window.setTimeout(() => {
+      lightbox.close();
+      lightboxImage.src = "";
+      document.body.classList.remove("lightbox-open");
+    }, reducedMotion.matches ? 0 : 260);
+  }
+
+  document.addEventListener("click", (event) => {
+    const zoomTarget = event.target.closest("[data-zoom-src]");
+    if (zoomTarget) {
+      openLightbox(zoomTarget.dataset.zoomSrc, zoomTarget.dataset.zoomCaption || "Expanded project image");
+    }
+  });
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  lightbox.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeLightbox();
+  });
 })();

@@ -21,7 +21,7 @@ python -m http.server 8000
 - `devlogs/index.html` contains the current devlog introduction.
 - `styles.css` controls the complete visual system.
 - `assets/images/` contains approved portfolio media.
-- `assets/brand/logo-board.png` is the temporary logo sheet.
+- `assets/brand/logo-transparent.webp` is the current temporary website logo.
 
 Add only media that is safe to publish. Never copy raw project folders, paid assets, private source files or development credentials into this repository.
 
@@ -30,6 +30,8 @@ Add only media that is safe to publish. Never copy raw project folders, paid ass
 - Homepage hierarchy and responsive layout implemented.
 - Supporting work and About use dedicated pages.
 - Mobile selected work uses one featured card followed by a compact 2×2 grid.
+- Project imagery opens in a full-screen zoom viewer.
+- Other Work uses full-width rows with multi-image galleries.
 - Selected projects open in a full-screen case-study preview.
 - Case-study previews always open at the top and use smooth enter/exit motion.
 - Shareable `?project=project-slug` state implemented.
