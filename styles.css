@@ -791,8 +791,10 @@ h3 {
   margin: 0;
   padding: 0;
   border: 0;
-  background: var(--ink);
+  background: rgba(9, 11, 16, 0.78);
   color: var(--paper);
+  -webkit-backdrop-filter: blur(14px) saturate(0.82);
+  backdrop-filter: blur(14px) saturate(0.82);
   opacity: 0;
   transform: translateY(22px) scale(0.992);
   transition:
@@ -801,8 +803,9 @@ h3 {
 }
 
 .project-dialog::backdrop {
-  background: rgba(3, 4, 6, 0.75);
-  backdrop-filter: blur(5px);
+  background: rgba(3, 4, 6, 0.28);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   opacity: 0;
   transition: opacity 320ms ease;
 }
@@ -819,6 +822,7 @@ h3 {
 .dialog-scroll {
   height: 100%;
   overflow-y: auto;
+  background: linear-gradient(180deg, rgba(9, 11, 16, 0.08), rgba(9, 11, 16, 0.58));
 }
 
 .dialog-close {
@@ -1152,13 +1156,31 @@ h3 {
   }
 
   .devlog-callout {
-    min-height: 360px;
+    min-height: 200px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr;
+  }
+
+  .devlog-visual,
+  .devlog-copy {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .devlog-visual {
+    min-height: 200px;
   }
 
   .devlog-copy {
-    padding: 25px 22px 28px;
+    position: relative;
+    z-index: 1;
+    padding: 24px 22px;
+    background: linear-gradient(90deg, rgba(9, 11, 16, 0.92), rgba(9, 11, 16, 0.54));
+  }
+
+  .devlog-copy strong {
+    margin-block: 8px 12px;
+    font-size: clamp(1.65rem, 8vw, 2.2rem);
   }
 
   .other-card {
