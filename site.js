@@ -8,11 +8,15 @@
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector("#site-nav");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const assetPrefix = document.body.dataset.assetPrefix || ".";
   let closeTimer;
 
   function projectMedia(project, className) {
     if (project.image) {
-      return `<img src="${project.image}" alt="${project.title} project preview" loading="lazy" />`;
+      const imagePath = project.image.startsWith("./")
+        ? `${assetPrefix}${project.image.slice(1)}`
+        : project.image;
+      return `<img src="${imagePath}" alt="${project.title} project preview" loading="lazy" />`;
     }
 
     return `
@@ -53,6 +57,7 @@
   }
 
   function openProject(slug, updateHistory = true) {
+    if (!content || !dialog || !dialogScroll) return;
     const project = content.selectedWork.find((item) => item.slug === slug);
     if (!project) return;
 
@@ -85,7 +90,7 @@
   }
 
   function closeProject(updateHistory = true) {
-    if (!dialog.open) return;
+    if (!dialog || !dialogScroll || !dialog.open) return;
 
     dialog.classList.remove("is-visible");
     window.clearTimeout(closeTimer);
@@ -106,39 +111,48 @@
     }
   }
 
-  selectedGrid.innerHTML = content.selectedWork.map(selectedCard).join("");
-  otherGrid.innerHTML = content.otherWork.map(otherCard).join("");
+  if (selectedGrid && content) {
+    selectedGrid.innerHTML = content.selectedWork.map(selectedCard).join("");
 
-  selectedGrid.addEventListener("click", (event) => {
-    const card = event.target.closest("[data-project]");
-    if (card) openProject(card.dataset.project);
-  });
+    selectedGrid.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-project]");
+      if (card) openProject(card.dataset.project);
+    });
+  }
 
-  closeButton.addEventListener("click", () => closeProject());
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) closeProject();
-  });
-  dialog.addEventListener("cancel", (event) => {
-    event.preventDefault();
-    closeProject();
-  });
+  if (otherGrid && content) {
+    otherGrid.innerHTML = content.otherWork.map(otherCard).join("");
+  }
 
-  window.addEventListener("popstate", () => {
-    const project = new URL(window.location.href).searchParams.get("project");
-    project ? openProject(project, false) : closeProject(false);
-  });
+  if (dialog && closeButton) {
+    closeButton.addEventListener("click", () => closeProject());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) closeProject();
+    });
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeProject();
+    });
 
-  menuButton.addEventListener("click", () => {
-    const open = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!open));
-    nav.classList.toggle("site-nav-open", !open);
-  });
+    window.addEventListener("popstate", () => {
+      const project = new URL(window.location.href).searchParams.get("project");
+      project ? openProject(project, false) : closeProject(false);
+    });
 
-  nav.addEventListener("click", () => {
-    menuButton.setAttribute("aria-expanded", "false");
-    nav.classList.remove("site-nav-open");
-  });
+    const requestedProject = new URL(window.location.href).searchParams.get("project");
+    if (requestedProject) openProject(requestedProject, false);
+  }
 
-  const requestedProject = new URL(window.location.href).searchParams.get("project");
-  if (requestedProject) openProject(requestedProject, false);
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("site-nav-open", !open);
+    });
+
+    nav.addEventListener("click", () => {
+      menuButton.setAttribute("aria-expanded", "false");
+      nav.classList.remove("site-nav-open");
+    });
+  }
 })();

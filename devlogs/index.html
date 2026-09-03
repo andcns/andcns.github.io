@@ -7,6 +7,7 @@
     <meta name="description" content="Current development notes from technical artist Andrei-Constantin Purcăreață." />
     <title>Current Devlogs — Andrei-Constantin Purcăreață</title>
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../site.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -17,8 +18,14 @@
           <span class="brand-role">Technical Artist · PCG</span>
         </span>
       </a>
-      <nav class="site-nav devlog-nav" aria-label="Devlog navigation">
-        <a href="../">← Portfolio</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="../#selected-work">Selected work</a>
+        <a href="../other-work/">Other work</a>
+        <a href="./" aria-current="page">Current devlogs</a>
+        <a href="../about/">About</a>
         <a class="nav-cv" href="../assets/files/Andrei-Purcareata-CV.pdf">CV ↗</a>
       </nav>
     </header>
