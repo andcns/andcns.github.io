@@ -3,11 +3,11 @@ window.PORTFOLIO_CONTENT = {
     {
       slug: "project-winterlight",
       title: "Project Winterlight",
-      label: "Technical art · Unity dissertation",
+      label: "Technical art · Runtime style system",
       role: "Solo developer / technical artist",
-      tools: "Unity URP · Blender · Substance 3D Painter",
+      tools: "Unity 6 / URP · C# · Blender · Substance 3D Painter",
       outcome: "74 · First-class dissertation · Digital Shark Expo nominee",
-      summary: "A playable boomer-shooter built around a real-time switch between modern and 1990s-inspired presentation while gameplay remains consistent.",
+      summary: "A controlled FPS prototype built around a system-wide runtime transition between modern 3D and 1990s-inspired presentation while gameplay remains mechanically consistent.",
       image: "./assets/images/winterlight/cover.webp",
       featured: true
     },

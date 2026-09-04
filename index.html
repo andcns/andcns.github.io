@@ -10,12 +10,13 @@
     />
     <title>Andrei-Constantin Purcăreață — Technical Artist</title>
     <link rel="stylesheet" href="./styles.css?v=10" />
-    <script src="./content/portfolio.js?v=10" defer></script>
+    <link rel="stylesheet" href="./winterlight.css?v=2" />
+    <script src="./content/portfolio.js?v=12" defer></script>
     <script src="./site.js?v=10" defer></script>
+    <script src="./content/winterlight.js?v=2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#selected-work">Skip to selected work</a>
-
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Andrei-Constantin Purcăreață — back to top">
         <span class="brand-mark" aria-hidden="true">
@@ -26,11 +27,9 @@
           <span class="brand-role">Technical Artist · PCG</span>
         </span>
       </a>
-
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span>Menu</span>
       </button>
-
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="#selected-work" aria-current="page">Selected work</a>
         <a href="./other-work/">Other work</a>
@@ -39,7 +38,6 @@
         <a class="nav-cv" href="./assets/files/Andrei-Purcareata-CV.pdf">CV <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
-
     <main id="top">
       <section class="intro shell" aria-labelledby="intro-title">
         <div class="intro-copy">
@@ -52,19 +50,16 @@
             <path class="shader-link shader-link-copper" d="M340 48 C438 48 452 229 540 229"></path>
             <path class="shader-link shader-link-violet" d="M420 440 C500 440 472 259 540 259"></path>
           </svg>
-
           <span class="shader-node shader-node-noise">
             <span class="shader-node-title">Noise Texture</span>
             <span class="shader-node-row"><i class="shader-socket socket-input"></i>Scale <b>5.0</b><i class="shader-socket socket-output socket-copper"></i></span>
             <span class="shader-node-row"><i class="shader-socket socket-input"></i>Detail <b>2.0</b><i class="shader-socket socket-output socket-grey"></i></span>
           </span>
-
           <span class="shader-node shader-node-range">
             <span class="shader-node-title">Map Range</span>
             <span class="shader-node-row"><i class="shader-socket socket-input socket-violet"></i>Value <b>0.62</b></span>
             <span class="shader-node-row"><i class="shader-socket socket-input"></i>Result<i class="shader-socket socket-output socket-violet"></i></span>
           </span>
-
           <span class="shader-node shader-node-output">
             <span class="shader-node-title shader-node-title-output">Material Output</span>
             <span class="shader-node-row"><i class="shader-socket socket-input socket-copper"></i>Surface</span>
@@ -72,7 +67,6 @@
           </span>
         </div>
       </section>
-
       <section class="section shell" id="selected-work" aria-labelledby="selected-title">
         <header class="section-header">
           <p class="section-index">01</p>
@@ -84,7 +78,6 @@
         </header>
         <div class="selected-grid" id="selected-grid"></div>
       </section>
-
       <section class="shell devlog-callout-wrap" aria-label="Current development">
         <a class="devlog-callout" href="./devlogs/">
           <span class="devlog-visual" aria-hidden="true">
@@ -99,7 +92,6 @@
           </span>
         </a>
       </section>
-
     </main>
 
     <footer class="site-footer shell">
@@ -107,7 +99,6 @@
       <span>Technical Art · PCG · Realtime 3D</span>
       <span>© 2026</span>
     </footer>
-
     <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
       <button class="dialog-close" type="button" aria-label="Close case study">Close <span aria-hidden="true">×</span></button>
       <div class="dialog-scroll">
