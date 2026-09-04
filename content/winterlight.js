@@ -113,7 +113,7 @@
 
           <div class="wl-arch-listeners">
             <div class="wl-listener"><strong>Environment</strong><span>Material sets switch while the level geometry remains unchanged.</span></div>
-            <div class="wl-listener"><strong>Enemy visuals</strong><span>3D and billboard representations remain alive; renderers and muzzles switch.</span></div>
+            <div class="wl-listener"><strong>Enemy visuals</strong><span>3D and billboard representations remain alive; renderers and damage VFX switch.</span></div>
             <div class="wl-listener"><strong>Player weapon</strong><span>Modern and retro weapon representations respond to the same global state.</span></div>
             <div class="wl-listener"><strong>HUD</strong><span>Panel art, fonts, face states and crosshair update together.</span></div>
             <div class="wl-listener"><strong>Audio</strong><span>Mixer snapshots move between clean and deliberately degraded presentation.</span></div>
@@ -135,7 +135,7 @@
             <p class="technical-label">Contribution / Authorship</p>
             <h3 id="wl-owned-title">What I built, and what I integrated.</h3>
           </div>
-          <p>This was a solo dissertation prototype, but not every resource in the frame was authored from zero. I prefer to make that boundary explicit.</p>
+          <p>This was a solo dissertation prototype, but some production assets were sourced. I’ve broken down exactly what I made, what I directed and what I integrated below.</p>
         </header>
 
         <div class="wl-ownership-grid">
@@ -159,7 +159,7 @@
               <li>Environment surface materials came from a licensed paid PBR material library; I built and dressed the playable space around the research requirements.</li>
               <li>The CRT post-process was a commercial shader asset that I integrated and tuned as part of the retro presentation.</li>
               <li>All sound effects were sourced from Pixabay.</li>
-              <li>Original music was produced by a music producer under my direction.</li>
+              <li>Original music produced by a professional music producer under my direction.</li>
               <li>C# implementation used AI-assisted coding based on my system design and requirements. I integrated, tested, debugged and iterated the systems in Unity.</li>
             </ul>
           </article>
@@ -192,7 +192,7 @@
         </header>
 
         <div class="wl-problem-grid">
-          ${loopVideo(media.enemyVideo, media.enemyPoster, "Modern 3D / Retro billboard")}
+          ${loopVideo(media.enemyVideo, media.enemyPoster, "Retro billboard / Modern 3D")}
           <div class="wl-problem-copy">
             <article class="wl-ps-card problem">
               <p class="technical-label">Problem</p>
@@ -202,7 +202,7 @@
             <article class="wl-ps-card solution">
               <p class="technical-label">Solution</p>
               <h4>Gameplay drives presentation</h4>
-              <p>EnemyRangedBrain and RangedAttackModule own navigation and attack state. EnemyVisualAnimatorProxy sends the same parameters to both animators, while EnemyStyleSwapListener controls which renderer and muzzle are presented.</p>
+              <p>EnemyRangedBrain and RangedAttackModule own navigation and attack state. EnemyVisualAnimatorProxy sends the same parameters to both animators, while EnemyStyleSwapListener controls which renderer and damage VFX are presented.</p>
             </article>
           </div>
         </div>
@@ -285,9 +285,10 @@
         <p class="wl-result-note">The sample was small (n=12) and no post-hoc pairwise tests were conducted, so I treat the statistical result as indicative rather than definitive. Within that limitation, the transition condition did not show the immersion drop I was specifically testing for.</p>
 
         <div class="wl-takeaway">
-          <p class="technical-label">What I took forward</p>
-          <blockquote>Presentation systems are easier to control when visual state is separated from gameplay state.</blockquote>
-          <p>The retro state ultimately developed a stronger visual identity than the modern state. With more production time I would strengthen the modern lighting and material language, extend testing across longer sessions, and add behavioural metrics alongside self-reporting. Technically, the architecture is the part I would carry into future real-time and procedural work.</p>
+          <p class="technical-label">Personal reflection</p>
+          <blockquote>Winterlight was the first project where I properly shifted my mindset from visual artist to technical artist.</blockquote>
+          <p>What first attracted me to the brief was the contrast between modern and retro graphics. The real-time constraint, combined with the academic research side of the project, forced me to think differently: not just about making art, but about how to build systems around it and how to turn visual ideas into something the engine could control consistently.</p>
+          <p>By the end of the project I felt I had moved from thinking mainly as a visual artist to thinking much more like a systems designer. I also discovered how satisfying it is to systematise an abstract idea — taking something I had never built before, understanding how the engine needed to work, breaking the problem apart and eventually seeing that idea materialise in real time. That is the part of the project that pushed me most strongly towards Technical Art.</p>
         </div>
 
         <div class="wl-full-gameplay">
@@ -299,7 +300,12 @@
 
         <div class="wl-credits">
           <span class="technical-label">Credits</span>
-          <p>Solo dissertation project by Andrei-Constantin Purcăreață. Original music produced by a music producer under my direction. SFX sourced from Pixabay. Environment surfaces use licensed paid PBR materials. CRT presentation uses a commercial post-process asset integrated and tuned for the project.</p>
+          <div class="wl-credit-list">
+            <p><strong>Music</strong> — Vlad Popescu, produced under my direction.</p>
+            <p><strong>CRT post-process</strong> — <a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/crt-postprocess-for-urp-hdrp-and-built-in-pipelines-310692" target="_blank" rel="noopener noreferrer">CRT Postprocess for URP, HDRP and Built-in Pipelines ↗</a></p>
+            <p><strong>Environment materials</strong> — <a href="https://freepbr.com/" target="_blank" rel="noopener noreferrer">FreePBR.com ↗</a></p>
+            <p><strong>SFX</strong> — Pixabay.</p>
+          </div>
         </div>
       </section>
     </div>`;

@@ -800,3 +800,32 @@
     min-height: 0;
   }
 }
+
+
+/* Linked credits */
+.wl-credit-list {
+  display: grid;
+  gap: 6px;
+}
+
+.wl-credit-list p {
+  margin: 0;
+}
+
+.wl-credit-list strong {
+  color: var(--paper-soft);
+  font-weight: 700;
+}
+
+.wl-credit-list a {
+  color: var(--copper-bright);
+  text-decoration: underline;
+  text-decoration-color: rgba(223, 169, 111, 0.35);
+  text-underline-offset: 3px;
+}
+
+.wl-credit-list a:hover,
+.wl-credit-list a:focus-visible {
+  color: var(--paper);
+  text-decoration-color: var(--violet);
+}

@@ -1,6 +1,6 @@
-# Winterlight final polish fix
+# Winterlight — final text and credits update
 
-Replace / add these files in the portfolio repo:
+Replace these files in the portfolio repo:
 
 - `index.html`
 - `content/winterlight.js`
@@ -8,14 +8,15 @@ Replace / add these files in the portfolio repo:
 - `assets/images/winterlight/gun-wire-modern.webp`
 - `assets/images/winterlight/gun-wire-retro.webp`
 
-Changes in this patch:
+Final changes:
 
-- Preserves the mobile autoplay/video reliability fix.
-- Corrects the wireframe identities:
-  - Modern = higher-poly topology image.
-  - Retro = lower-poly topology image.
-- Forces both wireframe comparison cards to the same aspect ratio and visual height.
-- Changes the music prose to `music producer` rather than naming Vlad in the sentence.
-- Bumps Winterlight CSS/JS cache versions to `v=4`.
-
-After replacing the files, commit and push. On mobile, refresh once after GitHub Pages finishes deploying.
+- Enemy architecture copy now refers to renderer / damage-VFX switching rather than muzzle switching.
+- Authorship intro rewritten in more natural language.
+- Body copy describes the soundtrack as produced by a professional music producer under Andrei's direction.
+- Vlad Popescu is named only in the dedicated credits.
+- Enemy comparison label now reads `Retro billboard / Modern 3D` to match the image order.
+- Personal reflection rewritten from Andrei's own statement about the shift from visual artist to Technical Artist / systems designer.
+- Existing linked CRT, FreePBR and Pixabay credits retained.
+- Correct Modern / Retro wireframe images retained.
+- Mobile video autoplay fix retained.
+- Winterlight JS/CSS cache version bumped to `v=6`.
