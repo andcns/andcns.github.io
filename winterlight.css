@@ -768,3 +768,35 @@
     min-height: 240px;
   }
 }
+
+
+/* Final wireframe comparison polish */
+.wl-wire-pair {
+  align-items: stretch;
+}
+
+.wl-wire-pair figure {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+}
+
+.wl-wire-pair .zoomable-image {
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+
+.wl-wire-pair .zoomable-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 700px) {
+  .wl-wire-pair .zoomable-image {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+}

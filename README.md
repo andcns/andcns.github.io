@@ -1,17 +1,21 @@
-# Winterlight mobile video fix
+# Winterlight final polish fix
 
-Replace:
+Replace / add these files in the portfolio repo:
 
-- `content/winterlight.js`
 - `index.html`
+- `content/winterlight.js`
+- `winterlight.css`
+- `assets/images/winterlight/gun-wire-modern.webp`
+- `assets/images/winterlight/gun-wire-retro.webp`
 
-Then commit and push.
+Changes in this patch:
 
-What changed:
+- Preserves the mobile autoplay/video reliability fix.
+- Corrects the wireframe identities:
+  - Modern = higher-poly topology image.
+  - Retro = lower-poly topology image.
+- Forces both wireframe comparison cards to the same aspect ratio and visual height.
+- Changes the music prose to `music producer` rather than naming Vlad in the sentence.
+- Bumps Winterlight CSS/JS cache versions to `v=4`.
 
-- Winterlight loop videos now request `autoplay`, `muted`, `playsinline`, `webkit-playsinline`, and `preload="auto"`.
-- The script also sets the equivalent DOM properties before attempting playback.
-- Dynamically inserted hero and case-study videos are explicitly loaded and played.
-- Visible videos are retried on the first tap/click, `pageshow`, and when the page becomes visible again.
-- IntersectionObserver remains in place so off-screen technical loops pause.
-- Cache query for `winterlight.js` was bumped to `v=3`.
+After replacing the files, commit and push. On mobile, refresh once after GitHub Pages finishes deploying.

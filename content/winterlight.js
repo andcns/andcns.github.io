@@ -159,7 +159,7 @@
               <li>Environment surface materials came from a licensed paid PBR material library; I built and dressed the playable space around the research requirements.</li>
               <li>The CRT post-process was a commercial shader asset that I integrated and tuned as part of the retro presentation.</li>
               <li>All sound effects were sourced from Pixabay.</li>
-              <li>Original music was produced by Vlad under my direction.</li>
+              <li>Original music was produced by a music producer under my direction.</li>
               <li>C# implementation used AI-assisted coding based on my system design and requirements. I integrated, tested, debugged and iterated the systems in Unity.</li>
             </ul>
           </article>
@@ -299,7 +299,7 @@
 
         <div class="wl-credits">
           <span class="technical-label">Credits</span>
-          <p>Solo dissertation project by Andrei-Constantin Purcăreață. Original music produced by Vlad under my direction. SFX sourced from Pixabay. Environment surfaces use licensed paid PBR materials. CRT presentation uses a commercial post-process asset integrated and tuned for the project.</p>
+          <p>Solo dissertation project by Andrei-Constantin Purcăreață. Original music produced by a music producer under my direction. SFX sourced from Pixabay. Environment surfaces use licensed paid PBR materials. CRT presentation uses a commercial post-process asset integrated and tuned for the project.</p>
         </div>
       </section>
     </div>`;
