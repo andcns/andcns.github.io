@@ -45,7 +45,7 @@
   const loopVideo = (src, poster, label, className = "") => `
     <div class="wl-video-frame ${className}">
       <p class="technical-label">${label}</p>
-      <video data-wl-loop muted loop playsinline preload="metadata" poster="${poster}">
+      <video data-wl-loop autoplay muted loop playsinline webkit-playsinline preload="auto" poster="${poster}">
         <source src="${src}" type="video/mp4" />
       </video>
     </div>`;
@@ -305,8 +305,7 @@
     </div>`;
 
   function heroVideoMarkup() {
-    const autoplay = reducedMotion.matches ? "" : "autoplay";
-    return `<video class="wl-dialog-video" ${autoplay} muted loop playsinline preload="metadata" poster="${media.heroPoster}">
+    return `<video class="wl-dialog-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="${media.heroPoster}">
       <source src="${media.heroVideo}" type="video/mp4" />
     </video>`;
   }
@@ -316,28 +315,96 @@
     if (!card) return;
     const cardMedia = card.querySelector(".card-media");
     if (!cardMedia) return;
-    const autoplay = reducedMotion.matches ? "" : "autoplay";
-    cardMedia.innerHTML = `<video class="wl-card-video" ${autoplay} muted loop playsinline preload="metadata" poster="${media.heroPoster}" aria-hidden="true">
+    cardMedia.innerHTML = `<video class="wl-card-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="${media.heroPoster}" aria-hidden="true">
       <source src="${media.heroVideo}" type="video/mp4" />
     </video>`;
+    prepareAutoplayVideo(cardMedia.querySelector(".wl-card-video"));
   }
 
   let loopObserver;
+
+  function prepareAutoplayVideo(video) {
+    if (!video) return;
+
+    // Mobile Safari/Chrome are stricter with dynamically inserted media.
+    // Set both HTML attributes and DOM properties before attempting playback.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.preload = "auto";
+
+    const tryPlay = () => {
+      const result = video.play();
+      if (result && typeof result.catch === "function") {
+        result.catch(() => {
+          // Some mobile/browser power-saving policies still block autoplay.
+          // A later user interaction will retry all visible Winterlight loops.
+        });
+      }
+    };
+
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener("canplay", tryPlay, { once: true });
+      video.load();
+    }
+  }
+
+  function retryVisibleVideos() {
+    document.querySelectorAll(
+      ".wl-card-video, .wl-dialog-video, video[data-wl-loop]"
+    ).forEach((video) => {
+      const rect = video.getBoundingClientRect();
+      const visible =
+        rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.top < window.innerHeight &&
+        rect.left < window.innerWidth;
+
+      if (visible) prepareAutoplayVideo(video);
+    });
+  }
+
   function setupLoopVideos(scope) {
     if (loopObserver) loopObserver.disconnect();
+
     const videos = [...scope.querySelectorAll("video[data-wl-loop]")];
-    if (!videos.length || reducedMotion.matches) return;
+    videos.forEach(prepareAutoplayVideo);
+    if (!videos.length) return;
+
     loopObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
-          entry.target.play().catch(() => {});
+        if (entry.isIntersecting && entry.intersectionRatio > 0.12) {
+          prepareAutoplayVideo(entry.target);
         } else {
           entry.target.pause();
         }
       });
-    }, { threshold: [0, 0.25, 0.6] });
+    }, { threshold: [0, 0.12, 0.4] });
+
     videos.forEach((video) => loopObserver.observe(video));
   }
+
+  // The first tap used to open the project also unlocks playback on browsers
+  // that refuse autoplay for dynamically inserted videos.
+  ["pointerdown", "touchstart", "click"].forEach((eventName) => {
+    document.addEventListener(eventName, retryVisibleVideos, {
+      passive: true,
+      capture: true
+    });
+  });
+
+  window.addEventListener("pageshow", retryVisibleVideos);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) retryVisibleVideos();
+  });
 
   function restoreDefaultPlaceholder(host) {
     if (!host) return;
@@ -356,6 +423,7 @@
     const isWinterlight = title.textContent.trim() === "Project Winterlight";
     if (isWinterlight) {
       if (!hero.querySelector(".wl-dialog-video")) hero.innerHTML = heroVideoMarkup();
+      prepareAutoplayVideo(hero.querySelector(".wl-dialog-video"));
       host.className = "dialog-case-study-host";
       if (!host.querySelector(".wl-case-study")) {
         host.innerHTML = caseStudyHtml;
