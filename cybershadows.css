@@ -437,3 +437,190 @@
   .cs-outcome-strip > div:nth-child(4) { border-top: 1px solid var(--line); }
   .cs-credits { grid-template-columns: 1fr; }
 }
+
+/* v2 media framing pass: clean source crops + deliberate image aspect ratios. */
+.cs-case-study .zoomable-image {
+  overflow: hidden;
+  background: #171a20;
+}
+
+.cs-case-study .zoomable-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-position: 50% 50%;
+}
+
+/* Character art is portrait-first rather than stretching an editor viewport across the card. */
+.cs-character-feature {
+  grid-template-columns: minmax(300px, 0.72fr) minmax(340px, 1fr);
+}
+
+.cs-character-main {
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  align-self: start;
+}
+
+.cs-character-main img {
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+.cs-character-process .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.cs-character-process img {
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+/* Matched portrait crops make the shader comparison read as an actual before/after. */
+.cs-shader-result .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+}
+
+.cs-shader-result img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Graphs are wide by nature; show the canvas, not Unreal's surrounding chrome. */
+.cs-shader-graphs .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 2.2 / 1;
+}
+
+.cs-shader-graphs img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.cs-world-grid .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.cs-world-grid img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.cs-ui-grid .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.cs-ui-grid img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.cs-combat-pair .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.cs-combat-pair img {
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+
+.cs-ai-block > .zoomable-image {
+  min-height: 0;
+  aspect-ratio: 2.05 / 1;
+}
+
+.cs-ai-block > .zoomable-image img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+@media (max-width: 980px) {
+  .cs-character-feature { grid-template-columns: minmax(280px, .72fr) 1fr; }
+}
+
+@media (max-width: 700px) {
+  .cs-character-feature { grid-template-columns: 1fr; }
+  .cs-character-main { aspect-ratio: 4 / 5; max-height: 620px; }
+  .cs-character-process .zoomable-image { aspect-ratio: 4 / 5; }
+  .cs-shader-graphs .zoomable-image,
+  .cs-ai-block > .zoomable-image { aspect-ratio: 16 / 9; }
+}
+
+
+/* v5 homepage card hierarchy — secondary Selected Work cards only. */
+/* The first card (Winterlight) keeps its existing large-card treatment. */
+.selected-grid > .selected-card:not(:first-child) .technical-label {
+  display: none !important;
+}
+
+.selected-grid > .selected-card:not(:first-child) .card-copy {
+  position: absolute;
+  top: clamp(18px, 1.6vw, 24px) !important;
+  right: clamp(18px, 1.6vw, 24px) !important;
+  bottom: auto !important;
+  left: clamp(18px, 1.6vw, 24px) !important;
+  z-index: 4;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.selected-grid > .selected-card:not(:first-child) .card-copy strong {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(1.55rem, 2.05vw, 2.15rem) !important;
+  line-height: .98;
+  letter-spacing: -.035em;
+  white-space: nowrap;
+  text-shadow: 0 2px 16px rgba(4, 5, 8, .74);
+}
+
+.selected-grid > .selected-card:not(:first-child) .card-role {
+  display: block;
+  margin-top: 7px !important;
+  max-width: 100%;
+  font-size: clamp(.68rem, .78vw, .78rem) !important;
+  line-height: 1.15;
+  letter-spacing: .005em;
+  color: rgba(245, 242, 234, .92);
+  white-space: nowrap;
+  text-shadow: 0 2px 12px rgba(4, 5, 8, .84);
+}
+
+/* Put readability where the copy now lives instead of darkening the artwork at the bottom. */
+.selected-grid > .selected-card:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 56% 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7, 9, 13, .76) 0%, rgba(7, 9, 13, .30) 52%, rgba(7, 9, 13, 0) 100%) !important;
+}
+
+@media (max-width: 900px) {
+  .selected-grid > .selected-card:not(:first-child) .card-copy strong {
+    font-size: clamp(1.42rem, 4.7vw, 1.95rem) !important;
+  }
+
+  .selected-grid > .selected-card:not(:first-child) .card-role {
+    font-size: .70rem !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .selected-grid > .selected-card:not(:first-child) .card-copy {
+    top: 16px !important;
+    right: 16px !important;
+    left: 16px !important;
+  }
+
+  .selected-grid > .selected-card:not(:first-child) .card-copy strong,
+  .selected-grid > .selected-card:not(:first-child) .card-role {
+    white-space: normal;
+  }
+}

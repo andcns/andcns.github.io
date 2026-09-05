@@ -2,19 +2,20 @@
   const ROOT = "./assets/images/cybershadows/";
 
   const media = {
-    hero: `${ROOT}hero.webp`,
-    baseCharacter: `${ROOT}base-character.webp`,
-    shaderImplementation: `${ROOT}shader-implementation.webp`,
-    celShader: `${ROOT}cel-shader-graph.webp`,
-    outlineShader: `${ROOT}outline-shader-graph.webp`,
-    keikoRig: `${ROOT}keiko-rig-physics.webp`,
-    meleeRobRig: `${ROOT}melee-rob-rig.webp`,
-    melee: `${ROOT}melee-gameplay.webp`,
-    ranged: `${ROOT}ranged-gameplay.webp`,
-    enemyTree: `${ROOT}enemy-behaviour-tree.webp`,
-    levelTorii: `${ROOT}level-torii.webp`,
+    hero: `${ROOT}hero-clean.webp`,
+    keikoBaseFull: `${ROOT}keiko-base-full.webp`,
+    baseCharacter: `${ROOT}base-character-clean.webp`,
+    shaderImplementation: `${ROOT}shader-implementation-clean.webp`,
+    celShader: `${ROOT}cel-shader-graph-clean.webp`,
+    outlineShader: `${ROOT}outline-shader-graph-clean.webp`,
+    keikoRig: `${ROOT}keiko-rig-physics-clean.webp`,
+    meleeRobRig: `${ROOT}melee-rob-rig-clean.webp`,
+    melee: `${ROOT}melee-gameplay-clean.webp`,
+    ranged: `${ROOT}ranged-gameplay-clean.webp`,
+    enemyTree: `${ROOT}enemy-behaviour-tree-clean.webp`,
+    levelTorii: `${ROOT}level-torii-clean.webp`,
     menu: `${ROOT}menu.webp`,
-    pause: `${ROOT}pause.webp`,
+    hud: `${ROOT}hud.webp`,
     gameplay: `${ROOT}gameplay-60s.mp4`
   };
 
@@ -38,9 +39,9 @@
           <p class="cs-index">01</p>
           <div>
             <p class="technical-label">Project scope / Accountability</p>
-            <h3 id="cs-scope-title">A solo vertical slice built while learning Unreal.</h3>
+            <h3 id="cs-scope-title">Original character art and visual design carried into a playable Unreal slice.</h3>
           </div>
-          <p>CyberShadows was my second-year Games Portfolio project: an anime-inspired third-person hack-and-slash set in a futuristic Japan. I designed the concept and visual direction, created the key character art and supporting assets, assembled the level and UI, and brought the project to a mostly playable vertical slice.</p>
+          <p>CyberShadows was my second-year Games Portfolio project: an anime-inspired third-person hack-and-slash set in a futuristic Japan. I owned the concept and visual direction, created the key character art and props, designed the level layout and UI, and integrated the work into a playable Unreal vertical slice.</p>
         </header>
 
         <div class="cs-scope-grid">
@@ -51,23 +52,23 @@
               <li>Game concept, visual direction and level progression.</li>
               <li>Keiko player character design, modelling, UVs and texturing.</li>
               <li>Melee Rob enemy design, modelling and texturing.</li>
-              <li>Supporting props including the katana, torii gate and additional project assets.</li>
-              <li>Level layout and lighting using a third-party modular environment kit.</li>
+              <li>Supporting props including the katana, torii gate, kunai and Asia-style lamp.</li>
+              <li>Level layout and scene assembly using a third-party modular environment kit.</li>
               <li>Main menu, pause menu and in-game UI design.</li>
             </ul>
           </article>
           <article class="cs-scope-card cs-assisted">
-            <p class="technical-label">Tutorial-led / Integrated by me</p>
-            <h4>Gameplay and rendering foundations</h4>
+            <p class="technical-label">Implementation / Learning resources</p>
+            <h4>Tutorial foundations, adapted in-project</h4>
             <ul>
               <li>Player movement, stamina, dash, melee/ranged combat, target lock and damage systems.</li>
               <li>Enemy AI, behaviour trees and supporting gameplay logic.</li>
               <li>Cel-shading and inverted-hull outline materials.</li>
-              <li>Systems were followed from tutorials and university material, then adapted and connected inside this project; I did not independently architect the underlying code.</li>
+              <li>The underlying architectures came from tutorials and university material; my work was adapting, connecting and debugging them inside CyberShadows rather than designing them from scratch.</li>
             </ul>
           </article>
         </div>
-        <p class="cs-caption">The implementation boundary is intentional: this page shows what I created, what I learned to integrate, and where external learning resources formed the technical foundation.</p>
+        <p class="cs-caption">Authorship is separated here so the original art/design work and the tutorial-led implementation can be evaluated clearly.</p>
       </section>
 
       <section class="cs-section" aria-labelledby="cs-character-title">
@@ -75,13 +76,13 @@
           <p class="cs-index">02</p>
           <div>
             <p class="technical-label">Character art / Engine setup</p>
-            <h3 id="cs-character-title">Keiko and Melee Rob.</h3>
+            <h3 id="cs-character-title">Two original characters built for gameplay.</h3>
           </div>
-          <p>The character work was the strongest original production area in the project. Both characters were created specifically for CyberShadows, then prepared for animation and Unreal implementation with assisted rigging workflows.</p>
+          <p>Keiko and Melee Rob were created specifically for CyberShadows. I took both from original design and modelling through texturing, assisted rigging workflows and Unreal implementation.</p>
         </header>
 
         <div class="cs-character-feature">
-          ${zoomImage(media.baseCharacter, "Keiko base character appearance in Unreal Engine before the stylised shader treatment", "cs-character-main")}
+          ${zoomImage(media.keikoBaseFull, "Keiko character model before the stylised shader treatment", "cs-character-main")}
           <article class="cs-character-copy">
             <p class="technical-label">Keiko / Player character</p>
             <h4>Designed and built for the game.</h4>
@@ -107,9 +108,9 @@
           <p class="cs-index">03</p>
           <div>
             <p class="technical-label">Technical art / Stylised rendering</p>
-            <h3 id="cs-render-title">Pushing the characters toward an anime look.</h3>
+            <h3 id="cs-render-title">Adapting anime-style shading to the character pipeline.</h3>
           </div>
-          <p>I wanted the characters to read more like 2D animation inside a 3D world. Following Unreal material tutorials, I implemented stepped cel shading and an inverted-hull outline, then integrated the setup on the project characters.</p>
+          <p>I wanted the characters to read more like 2D animation inside a 3D world. I implemented stepped cel shading and an inverted-hull outline from tutorial foundations, then tuned and integrated the setup on the project characters.</p>
         </header>
 
         <div class="cs-shader-result">
@@ -128,7 +129,7 @@
             <figcaption>Outline — an expanded inverted hull produces the graphic silhouette around the character.</figcaption>
           </figure>
         </div>
-        <p class="cs-caption">These material techniques were tutorial-led rather than independently developed; the useful learning outcome was understanding their construction well enough to integrate and tune them for my own characters.</p>
+        <p class="cs-caption">The material techniques came from tutorials; my contribution was integrating, tuning and applying them consistently to the characters and engine setup.</p>
       </section>
 
       <section class="cs-section" aria-labelledby="cs-world-title">
@@ -136,9 +137,9 @@
           <p class="cs-index">04</p>
           <div>
             <p class="technical-label">Level design / UI</p>
-            <h3 id="cs-world-title">Building the playable route around the visual direction.</h3>
+            <h3 id="cs-world-title">Assembling a readable combat route from a modular kit.</h3>
           </div>
-          <p>The environment geometry came from a third-party modular kit rather than being authored by me. I used it to design the route, combat spaces and lighting, with the cyberpunk/anime contrast carried by colour, character presentation and UI.</p>
+          <p>The environment geometry came from a third-party modular kit. I used it to design the route, combat spaces and scene composition rather than relying on a preassembled map, with the cyberpunk/anime contrast carried by colour, character presentation and UI.</p>
         </header>
 
         <div class="cs-world-grid">
@@ -153,7 +154,7 @@
             <p>I designed the main menu, pause menu and in-game HUD, then implemented them around the tutorial-led gameplay systems. Music and sound effects were sourced from Pixabay.</p>
           </article>
           ${zoomImage(media.menu, "CyberShadows main menu")}
-          ${zoomImage(media.pause, "CyberShadows pause menu")}
+          ${zoomImage(media.hud, "CyberShadows in-game HUD during the playable slice")}
         </div>
       </section>
 
@@ -162,9 +163,9 @@
           <p class="cs-index">05</p>
           <div>
             <p class="technical-label">Gameplay / Tutorial-led implementation</p>
-            <h3 id="cs-gameplay-title">Learning to connect systems into one game.</h3>
+            <h3 id="cs-gameplay-title">Connecting learned systems into a functioning combat slice.</h3>
           </div>
-          <p>The player and enemy frameworks were assembled from several tutorial sources and university material. I adapted the implementations to my characters and project requirements, debugged integration problems and got the separate pieces operating together, but made no major architectural changes to the tutorial code.</p>
+          <p>The player and enemy frameworks were tutorial-led. My work here was adapting them to the project, connecting character, animation and UI assets, debugging integration issues and getting the separate systems operating together as a complete gameplay loop.</p>
         </header>
 
         <div class="cs-combat-pair">
@@ -188,16 +189,16 @@
           <p class="cs-index">06</p>
           <div>
             <p class="technical-label">Outcome / Reflection</p>
-            <h3 id="cs-outcome-title">A functioning slice, not a finished game.</h3>
+            <h3 id="cs-outcome-title">Playable from start to finish, with the final art pass incomplete.</h3>
           </div>
-          <p>The project reached roughly three quarters of the intended vertical slice. It can be played through with working win and lose states, while the final part of the route remained at greybox stage when development stopped.</p>
+          <p>The vertical slice has a working start-to-finish gameplay loop, including menus, combat encounters and win/lose states. The final section of the route remained greyboxed when development stopped, so the gameplay is further along than the environment presentation.</p>
         </header>
 
         <div class="cs-outcome-strip">
           <div><span>Engine</span><strong>UE 5.4</strong></div>
           <div><span>Format</span><strong>Solo project</strong></div>
-          <div><span>State</span><strong>Playable</strong></div>
-          <div><span>Completion</span><strong>≈75%</strong></div>
+          <div><span>Playability</span><strong>Start-to-finish</strong></div>
+          <div><span>Remaining</span><strong>Final art pass</strong></div>
         </div>
 
         <div class="cs-takeaway">
@@ -207,7 +208,7 @@
         </div>
 
         <div class="cs-full-gameplay">
-          <p class="technical-label">Gameplay / 60 second cut</p>
+          <p class="technical-label">Gameplay excerpt / 60 seconds</p>
           <video controls playsinline preload="metadata" poster="${media.hero}">
             <source src="${media.gameplay}" type="video/mp4" />
           </video>
@@ -247,10 +248,27 @@
     if (!card) return;
     const cardMedia = card.querySelector(".card-media");
     if (cardMedia) cardMedia.innerHTML = `<img class="cs-card-image" src="${media.hero}" alt="" aria-hidden="true" />`;
-    const label = card.querySelector(".technical-label");
-    if (label) label.textContent = "Unreal Engine / Character + Game Art";
     const role = card.querySelector(".card-role");
-    if (role) role.textContent = "Character Art · Level Design · UE Integration";
+    if (role) role.textContent = "Character Art · Level Design · UE";
+  }
+
+  function compactSecondaryCards() {
+    const compactRoles = {
+      raydelgado: "Character Art",
+      cybershadows: "Character Art · Level Design · UE",
+      lumberjilltherpg: "UI Design · Character Art",
+      gladiatorascendant: "Visual Direction · Character Art · Procedural"
+    };
+
+    document.querySelectorAll("[data-project]").forEach((card) => {
+      const title = card.querySelector(".card-copy strong");
+      const key = normalizeTitle(title?.textContent);
+      if (!compactRoles[key]) return;
+
+      card.classList.add("compact-top-card");
+      const role = card.querySelector(".card-role");
+      if (role) role.textContent = compactRoles[key];
+    });
   }
 
   function restoreDefaultPlaceholder(host) {
@@ -274,11 +292,11 @@
     if (isCyber) {
       hero.innerHTML = zoomImage(media.hero, "CyberShadows — Keiko in the finished cyberpunk alley");
       label.textContent = "Solo university vertical slice / Unreal Engine 5.4";
-      summary.textContent = "Anime-inspired third-person hack-and-slash combining original character art, level and UI design with tutorial-led Unreal gameplay implementation.";
+      summary.textContent = "Anime-inspired third-person action slice combining original character art, stylised rendering, level/UI design and tutorial-led Unreal implementation.";
       meta.innerHTML = `
-        <div><dt>Role</dt><dd>Character Art · Game/Level Design · UE Integration</dd></div>
+        <div><dt>Role</dt><dd>Character Art · Visual/Level Design · UE Integration</dd></div>
         <div><dt>Tools</dt><dd>Unreal Engine 5.4 · Blender · Substance Painter · AccuRig · Mixamo</dd></div>
-        <div><dt>Outcome</dt><dd>Playable vertical slice · ≈75% complete</dd></div>`;
+        <div><dt>Outcome</dt><dd>Playable start-to-finish · final environment section greyboxed</dd></div>`;
       host.className = "cs-case-study-host";
       if (!host.querySelector(".cs-case-study")) host.innerHTML = caseStudyHtml;
     } else if (host.classList.contains("cs-case-study-host")) {
@@ -287,6 +305,7 @@
   }
 
   enhanceCard();
+  compactSecondaryCards();
   syncDialog();
 
   const title = document.querySelector("#dialog-title");
