@@ -52,40 +52,15 @@
 
   const caseStudyHtml = `
     <div class="wl-case-study">
-      <section class="wl-section" aria-labelledby="wl-context-title">
-        <header class="wl-section-head">
-          <p class="wl-index">01</p>
-          <div>
-            <p class="technical-label">Context / Research</p>
-            <h3 id="wl-context-title">One game. Two visual languages.</h3>
-          </div>
-          <p>Winterlight is a short boomer-shooter prototype built for my final-year dissertation. The research asked whether a seamless real-time shift between modern and 1990s-inspired presentation would affect player immersion when the underlying gameplay stayed the same.</p>
-        </header>
-
-        <p class="wl-lead">I built three controlled conditions — Modern, Retro and Transition — around the same level, combat rules and enemy behaviour. The experiment used the Immersive Experience Questionnaire (IEQ), but the technical challenge behind it became the part that shaped my direction most: separating gameplay state from presentation state so a whole FPS could change visual language during play.</p>
-
-        <div class="wl-research-strip" aria-label="Winterlight research summary">
-          <div class="wl-stat"><span>Participants</span><strong>12</strong><small>4 per condition</small></div>
-          <div class="wl-stat"><span>Modern IEQ</span><strong>4.90</strong><small>Mean immersion</small></div>
-          <div class="wl-stat"><span>Transition IEQ</span><strong>5.62</strong><small>Mean immersion</small></div>
-          <div class="wl-stat"><span>Retro IEQ</span><strong>6.06</strong><small>Mean immersion</small></div>
-        </div>
-
-        <div class="wl-gallery">
-          ${zoomImage(media.modernAction, "Winterlight modern presentation during combat", "wl-gallery-main")}
-          ${zoomImage(media.retroPoster, "Winterlight retro presentation with CRT degradation", "wl-gallery-side")}
-          ${zoomImage(media.transition, "Runtime transition between modern and retro presentation", "wl-gallery-wide")}
-        </div>
-      </section>
 
       <section class="wl-section" aria-labelledby="wl-architecture-title">
         <header class="wl-section-head">
-          <p class="wl-index">02</p>
+          <p class="wl-index">01</p>
           <div>
-            <p class="technical-label">Technical art / Architecture</p>
-            <h3 id="wl-architecture-title">The swap is a system, not a filter.</h3>
+            <p class="technical-label">Technical art / System overview</p>
+            <h3 id="wl-architecture-title">One gameplay state. Two presentation systems.</h3>
           </div>
-          <p>A central state change is committed at the midpoint of the glitch transition. Independent listeners then update the part of presentation they own, while gameplay logic remains outside the visual layer.</p>
+          <p>I approached the problem from the art side first: the modern and retro versions needed to feel like two complete visual states without becoming two different games. A central style state coordinates the presentation layers, while the underlying gameplay stays consistent.</p>
         </header>
 
         <div class="wl-architecture" role="img" aria-label="Simplified Winterlight style swap architecture">
@@ -120,6 +95,10 @@
           </div>
         </div>
         <p class="wl-caption">Simplified from the implemented Unity components. The transition effect commits the actual style change at its midpoint, rather than letting each subsystem change independently.</p>
+        <div class="wl-role-note">
+          <p class="technical-label">My role / Technical art</p>
+          <p>I approached Winterlight from a 3D art and technical-art perspective: defining how the visual states should behave, authoring the key 3D assets and presentation, and then building the Unity setup needed to make those elements work together in real time. I configured, integrated, tested and debugged the system in-engine, while the C# implementation used AI assistance based on my requirements and system design.</p>
+        </div>
 
         <div class="wl-inspector-grid">
           ${zoomImage(media.inspectorManager, "Unity StyleSwapManager inspector")}
@@ -128,14 +107,15 @@
         </div>
       </section>
 
+
       <section class="wl-section" aria-labelledby="wl-owned-title">
         <header class="wl-section-head">
-          <p class="wl-index">03</p>
+          <p class="wl-index">02</p>
           <div>
-            <p class="technical-label">Contribution / Authorship</p>
-            <h3 id="wl-owned-title">What I built, and what I integrated.</h3>
+            <p class="technical-label">3D art / Authorship</p>
+            <h3 id="wl-owned-title">Built as an artist. Systematised as technical art.</h3>
           </div>
-          <p>This was a solo dissertation prototype, but some production assets were sourced. I’ve broken down exactly what I made, what I directed and what I integrated below.</p>
+          <p>My starting point on Winterlight was 3D art. The weapon, enemy, retro presentation and visual direction are the foundation of the project; the technical work grew out of needing those authored assets to behave as one controlled real-time system.</p>
         </header>
 
         <div class="wl-ownership-grid">
@@ -143,11 +123,11 @@
             <p class="technical-label">Authored / Directed by me</p>
             <h4>Core project ownership</h4>
             <ul>
-              <li>System architecture and style-swap behaviour.</li>
-              <li>FPS gameplay integration, combat configuration and technical debugging.</li>
               <li>Khronovik player weapon: modelling, UVs, baking, texturing and Unity implementation.</li>
               <li>Enemy visual design, 3D asset and retro billboard representation.</li>
-              <li>HUD presentation, level layout, visual direction and transition timing.</li>
+              <li>Level layout, HUD presentation, visual direction and transition timing.</li>
+              <li>Technical-art system design: defining how each visual state should behave and how the presentation layers should respond together.</li>
+              <li>Unity integration, combat configuration, testing and technical debugging.</li>
               <li>Research design, playtesting, IEQ processing and evaluation.</li>
             </ul>
           </article>
@@ -159,8 +139,8 @@
               <li>Environment surface materials came from a licensed paid PBR material library; I built and dressed the playable space around the research requirements.</li>
               <li>The CRT post-process was a commercial shader asset that I integrated and tuned as part of the retro presentation.</li>
               <li>All sound effects were sourced from Pixabay.</li>
-              <li>Original music produced by a professional music producer under my direction.</li>
-              <li>C# implementation used AI-assisted coding based on my system design and requirements. I integrated, tested, debugged and iterated the systems in Unity.</li>
+              <li>Original music was produced by a professional music producer under my direction.</li>
+              <li>C# implementation used AI-assisted coding based on my system design and requirements. My role was to define the behaviour, author the visual content, configure and integrate the systems in Unity, then test, debug and iterate them.</li>
             </ul>
           </article>
         </div>
@@ -180,6 +160,33 @@
         </div>
         <p class="wl-caption">Khronovik was built as the single player-facing weapon platform. The same authored form supports both visual states, while the combat system changes ammunition behaviour and style-specific feedback without replacing the underlying weapon concept.</p>
       </section>
+
+      <section class="wl-section" aria-labelledby="wl-context-title">
+        <header class="wl-section-head">
+          <p class="wl-index">03</p>
+          <div>
+            <p class="technical-label">Research context / Constraint</p>
+            <h3 id="wl-context-title">The research gave the system a constraint.</h3>
+          </div>
+          <p>Winterlight was built for my final-year dissertation. The research question gave the technical-art work a clear constraint: modern, retro and transition conditions had to remain mechanically comparable, so the visual transformation could be tested without changing the game underneath it.</p>
+        </header>
+
+        <p class="wl-lead">I built three controlled conditions — Modern, Retro and Transition — around the same level, combat rules and enemy behaviour. The experiment used the Immersive Experience Questionnaire (IEQ). For the portfolio, the research matters mainly because it forced the presentation system to be controlled, repeatable and consistent.</p>
+
+        <div class="wl-research-strip" aria-label="Winterlight research summary">
+          <div class="wl-stat"><span>Participants</span><strong>12</strong><small>4 per condition</small></div>
+          <div class="wl-stat"><span>Modern IEQ</span><strong>4.90</strong><small>Mean immersion</small></div>
+          <div class="wl-stat"><span>Transition IEQ</span><strong>5.62</strong><small>Mean immersion</small></div>
+          <div class="wl-stat"><span>Retro IEQ</span><strong>6.06</strong><small>Mean immersion</small></div>
+        </div>
+
+        <div class="wl-gallery">
+          ${zoomImage(media.modernAction, "Winterlight modern presentation during combat", "wl-gallery-main")}
+          ${zoomImage(media.retroPoster, "Winterlight retro presentation with CRT degradation", "wl-gallery-side")}
+          ${zoomImage(media.transition, "Runtime transition between modern and retro presentation", "wl-gallery-wide")}
+        </div>
+      </section>
+
 
       <section class="wl-section" aria-labelledby="wl-problems-title">
         <header class="wl-section-head">
@@ -238,6 +245,7 @@
         </div>
       </section>
 
+
       <section class="wl-section" aria-labelledby="wl-ammo-title">
         <header class="wl-section-head">
           <p class="wl-index">05</p>
@@ -266,6 +274,7 @@
         </div>
       </section>
 
+
       <section class="wl-section" aria-labelledby="wl-results-title">
         <header class="wl-section-head">
           <p class="wl-index">06</p>
@@ -292,10 +301,17 @@
         </div>
 
         <div class="wl-full-gameplay">
-          <p class="technical-label">Gameplay / 60 second cut</p>
+          <p class="technical-label">Trailer</p>
           <video controls playsinline preload="metadata" poster="${media.gameplayPoster}">
             <source src="${media.gameplay}" type="video/mp4" />
           </video>
+          <a class="wl-build-download" href="https://github.com/andcns/andcns.github.io/releases/latest/download/Project_Winterlight_Win.rar" download>
+            <span>
+              <strong>Download build here</strong>
+              <small>Windows playable build</small>
+            </span>
+            <span class="wl-build-download-icon" aria-hidden="true">↓</span>
+          </a>
         </div>
 
         <div class="wl-credits">
@@ -331,9 +347,6 @@
 
   function prepareAutoplayVideo(video) {
     if (!video) return;
-
-    // Mobile Safari/Chrome are stricter with dynamically inserted media.
-    // Set both HTML attributes and DOM properties before attempting playback.
     video.muted = true;
     video.defaultMuted = true;
     video.autoplay = true;
@@ -347,12 +360,7 @@
 
     const tryPlay = () => {
       const result = video.play();
-      if (result && typeof result.catch === "function") {
-        result.catch(() => {
-          // Some mobile/browser power-saving policies still block autoplay.
-          // A later user interaction will retry all visible Winterlight loops.
-        });
-      }
+      if (result && typeof result.catch === "function") result.catch(() => {});
     };
 
     if (video.readyState >= 2) {
@@ -364,23 +372,15 @@
   }
 
   function retryVisibleVideos() {
-    document.querySelectorAll(
-      ".wl-card-video, .wl-dialog-video, video[data-wl-loop]"
-    ).forEach((video) => {
+    document.querySelectorAll(".wl-card-video, .wl-dialog-video, video[data-wl-loop]").forEach((video) => {
       const rect = video.getBoundingClientRect();
-      const visible =
-        rect.bottom > 0 &&
-        rect.right > 0 &&
-        rect.top < window.innerHeight &&
-        rect.left < window.innerWidth;
-
+      const visible = rect.bottom > 0 && rect.right > 0 && rect.top < window.innerHeight && rect.left < window.innerWidth;
       if (visible) prepareAutoplayVideo(video);
     });
   }
 
   function setupLoopVideos(scope) {
     if (loopObserver) loopObserver.disconnect();
-
     const videos = [...scope.querySelectorAll("video[data-wl-loop]")];
     videos.forEach(prepareAutoplayVideo);
     if (!videos.length) return;
@@ -398,13 +398,8 @@
     videos.forEach((video) => loopObserver.observe(video));
   }
 
-  // The first tap used to open the project also unlocks playback on browsers
-  // that refuse autoplay for dynamically inserted videos.
   ["pointerdown", "touchstart", "click"].forEach((eventName) => {
-    document.addEventListener(eventName, retryVisibleVideos, {
-      passive: true,
-      capture: true
-    });
+    document.addEventListener(eventName, retryVisibleVideos, { passive: true, capture: true });
   });
 
   window.addEventListener("pageshow", retryVisibleVideos);
@@ -428,6 +423,11 @@
 
     const isWinterlight = title.textContent.trim() === "Project Winterlight";
     if (isWinterlight) {
+      const dialogSummary = document.querySelector("#dialog-summary");
+      if (dialogSummary) {
+        dialogSummary.textContent = "A 3D art-led Unity dissertation project built around a runtime system that transforms the same FPS between modern and retro presentation states. I authored the key player-facing assets and designed how the art, HUD, enemy presentation, VFX and audio should respond as one controlled system.";
+      }
+
       if (!hero.querySelector(".wl-dialog-video")) hero.innerHTML = heroVideoMarkup();
       prepareAutoplayVideo(hero.querySelector(".wl-dialog-video"));
       host.className = "dialog-case-study-host";

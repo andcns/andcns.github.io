@@ -1,6 +1,8 @@
-# Winterlight — final text and credits update
+# Winterlight — final artist-first update
 
-Replace these files in the portfolio repo:
+This supersedes the previous build-button patch. Apply this one only.
+
+Replace:
 
 - `index.html`
 - `content/winterlight.js`
@@ -8,15 +10,30 @@ Replace these files in the portfolio repo:
 - `assets/images/winterlight/gun-wire-modern.webp`
 - `assets/images/winterlight/gun-wire-retro.webp`
 
-Final changes:
+What changed:
 
-- Enemy architecture copy now refers to renderer / damage-VFX switching rather than muzzle switching.
-- Authorship intro rewritten in more natural language.
-- Body copy describes the soundtrack as produced by a professional music producer under Andrei's direction.
-- Vlad Popescu is named only in the dedicated credits.
-- Enemy comparison label now reads `Retro billboard / Modern 3D` to match the image order.
-- Personal reflection rewritten from Andrei's own statement about the shift from visual artist to Technical Artist / systems designer.
-- Existing linked CRT, FreePBR and Pixabay credits retained.
-- Correct Modern / Retro wireframe images retained.
-- Mobile video autoplay fix retained.
-- Winterlight JS/CSS cache version bumped to `v=6`.
+- Case study now opens with the runtime visual system instead of immersion research.
+- New order:
+  1. Technical-art system overview
+  2. 3D art / authorship
+  3. Research context
+  4. Problems / solutions
+  5. Ammo configuration
+  6. Outcome / reflection / trailer / build
+- Top summary now clearly presents Winterlight as a 3D-art-led Technical Art project.
+- Added a short role note explaining that this is a Technical Art case study, not a programming case study.
+- 3D modelling, texturing, enemy art and visual direction are presented before implementation/debugging work.
+- AI-assisted C# disclosure remains explicit without implying software-engineering authorship.
+- Research is retained as the constraint that required the system to be controlled and repeatable, rather than the opening story.
+- Enemy wording corrected to damage VFX rather than muzzle switching.
+- Retro / Modern comparison caption order corrected.
+- Personal Technical Art reflection retained.
+- Vlad Popescu, CRT asset, FreePBR and Pixabay credits retained.
+- Correct Modern / Retro wireframes retained at matching heights.
+- Mobile autoplay fix retained.
+- Bottom video is labelled `Trailer`.
+- `Download build here` CTA is included beneath the trailer and points to the GitHub Release asset:
+  `Project_Winterlight_Win.rar`
+- Cache version bumped to `v=8`.
+
+Upload the build as a GitHub Release asset before expecting the download CTA to work.
