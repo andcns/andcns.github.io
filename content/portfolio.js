@@ -14,11 +14,11 @@ window.PORTFOLIO_CONTENT = {
     {
       slug: "ray-delgado",
       title: "Ray Delgado",
-      label: "Character art · Animation",
-      role: "Character artist",
-      tools: "Blender · Substance Painter · Unity · Mixamo · Rokoko",
-      outcome: "Game-ready character · Approx. 60k triangles",
-      summary: "A 1970s Miami private eye I designed, sculpted, retopologised and textured, then animated using a mix of tracker mocap and Mixamo motions retargeted for Unity.",
+      label: "Character art · Animation pipeline",
+      role: "Character artist · Animation integration",
+      tools: "Blender · Substance 3D Painter · Unity · Mixamo · Rokoko",
+      outcome: "Game-ready character · ≈60K tris · Unity animation set",
+      summary: "A 1970s Miami private eye built end to end: sculpt, retopology, Substance texturing, tracker mocap/Mixamo retargeting and Unity animation implementation.",
       image: "./assets/images/ray-delgado/hero-card.webp"
     },
     {

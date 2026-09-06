@@ -1,12 +1,14 @@
-# Ray Delgado page update v3
+# Ray Delgado — final hireability pass
 
-Extract this folder over the root of the current `andcns.github.io` repository.
+Apply over the current website root after the Ray Delgado v3 update.
 
-This update keeps the v2 hero/card/video changes and corrects the Ray Delgado pipeline wording to match the actual project:
+Only Ray-related content was changed:
+- tighter, recruiter-first copy
+- clearer ownership and end-to-end pipeline on the homepage card and case-study hero
+- animation + mocap sections consolidated to remove repetition
+- actual pipeline stated explicitly: Mixamo humanoid rig / Mixamo motions + tracker mocap / Rokoko retargeting in Blender / Unity Animator
+- Substance 3D Painter wording corrected to emphasise high-to-low normal baking and PBR texturing
+- early rig sketch clearly labelled as pre-production so it cannot be mistaken for the final rig
+- reflection shortened and tied to character-focused Technical Art without pretending the project was originally a TA project
 
-- Mixamo animations were used alongside tracker-based mocap.
-- Mocap clips were retargeted in Blender using the free Rokoko retargeting add-on.
-- Most normal detail was baked high-to-low in Substance Painter, which was also used for final texturing.
-- The reflection now connects that character pipeline experience more naturally to the later Technical Art direction.
-
-Only Ray Delgado content plus cache-version references in `index.html` are changed.
+No global styling, other projects, or media assets are changed by this patch.

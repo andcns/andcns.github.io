@@ -49,7 +49,7 @@
             <p class="technical-label">Animation showcase</p>
             <h3 id="rd-reel-title">Ray in motion.</h3>
           </div>
-          <p>A 59-second cut of the final Unity character controller: locomotion, aiming, shooting, crouching and cover. The process is broken down below.</p>
+          <p>A 59-second animation cut showing the implemented locomotion, weapon handling, crouch and cover set. The rest of the page breaks down how I built the character and brought the animation pipeline together.</p>
         </header>
         <div class="rd-reel">
           <video controls playsinline preload="metadata" poster="${media.reelPoster}">
@@ -63,9 +63,9 @@
           <p class="rd-index">02</p>
           <div>
             <p class="technical-label">Character design</p>
-            <h3 id="rd-design-title">Designing a 70s action hero.</h3>
+            <h3 id="rd-design-title">Designing a 70s private eye.</h3>
           </div>
-          <p>I wanted Ray to read immediately: broad shapes, a sharp jaw, moustache, aviators and a loud floral shirt. I drew the design first, then used the blockout and sculpt to push the proportions before committing to topology.</p>
+          <p>I wanted Ray to read clearly from a third-person camera: broad shapes, a sharp jaw, moustache, aviators and a loud floral shirt. I worked through the design on paper first, then used the blockout and sculpt to push the proportions before committing to topology.</p>
         </header>
         <div class="rd-design-grid">
           ${figure(media.sketch, "Original Ray Delgado character sketch showing front, side and facial studies", "Original character design / proportion study", "rd-design-main")}
@@ -83,7 +83,7 @@
             <p class="technical-label">Sculpt / Game-ready mesh</p>
             <h3 id="rd-production-title">From sculpt to game-ready mesh.</h3>
           </div>
-          <p>This was the first project where sculpting became a real part of my workflow. I retopologised the final form by hand, kept extra loops around the face and deformation areas, then unwrapped and baked the high-poly detail to a roughly 60K-triangle game mesh.</p>
+          <p>This was the first project where sculpting became a real part of my workflow. I retopologised the final form by hand, kept extra loops around the face and main deformation areas, then unwrapped the mesh and baked the high-poly normal detail down to a roughly 60K-triangle game asset.</p>
         </header>
         <div class="rd-pair rd-production-pair">
           ${figure(media.finalMesh, "Final untextured Ray Delgado character mesh in Blender", "Final game mesh")}
@@ -93,7 +93,7 @@
           <div><span>Target</span><strong>Real-time third-person</strong></div>
           <div><span>Final mesh</span><strong>≈60K tris</strong></div>
           <div><span>Pipeline</span><strong>Sculpt → Retopo → Bake</strong></div>
-          <div><span>Primary tools</span><strong>Blender · Substance</strong></div>
+          <div><span>Primary tools</span><strong>Blender · Substance Painter</strong></div>
         </div>
       </section>
 
@@ -102,17 +102,17 @@
           <p class="rd-index">04</p>
           <div>
             <p class="technical-label">Cloth simulation / Materials</p>
-            <h3 id="rd-material-title">Using cloth simulation instead of sculpting every fold.</h3>
+            <h3 id="rd-material-title">Cloth simulation, then high-to-low baking.</h3>
           </div>
-          <p>I built the shirt with Blender cloth simulation to get more natural folds, then applied and retopologised the result. Most of the surface detail was transferred from high to low by baking the normal maps in Substance Painter, where I also textured the final character.</p>
+          <p>I used Blender cloth simulation to establish the shirt folds, then applied and retopologised the result. Most normal detail was baked from the high-poly meshes onto the low-poly character in Substance Painter, which I also used for the final PBR texturing.</p>
         </header>
         <div class="rd-material-feature">
           ${figure(media.materialFull, "Full Ray Delgado material presentation in Blender", "Final textured character")}
           <article class="rd-copy-card">
             <p class="technical-label">Material separation</p>
             <h4>Keeping the materials readable.</h4>
-            <p>I used the high-poly sculpt to carry most of the small form and surface detail, then baked that information onto the game mesh in Substance Painter.</p>
-            <p>From there I kept the material treatment stylised but made sure fabric, denim, leather, metal and skin still read as different surfaces.</p>
+            <p>I kept most small-form detail in the high-poly meshes and transferred it to the game asset through normal baking in Substance Painter.</p>
+            <p>The textures stay stylised, but I still wanted fabric, denim, leather, metal and skin to read as different materials at a glance.</p>
           </article>
         </div>
         <div class="rd-detail-wide">
@@ -129,62 +129,51 @@
         <header class="rd-section-head">
           <p class="rd-index">05</p>
           <div>
-            <p class="technical-label">Animation / Retargeting / Unity</p>
-            <h3 id="rd-animation-title">Building Ray's animation set.</h3>
+            <p class="technical-label">Rigging / Retargeting / Unity</p>
+            <h3 id="rd-animation-title">Bringing different animation sources onto one character.</h3>
           </div>
-          <p>I combined Mixamo animations with tracker-based mocap. I retargeted the mocap clips onto Ray in Blender using the free Rokoko retargeting add-on, then brought the animation set into Unity and organised locomotion, cover and upper-body weapon actions through Animator layers.</p>
+          <p>The final character used a Mixamo humanoid rig. I combined Mixamo animations with tracker-based mocap, retargeted the captured clips onto Ray in Blender with Rokoko's retargeting add-on, then organised the full set in Unity using Animator layers.</p>
         </header>
         <div class="rd-animation-grid">
-          ${figure(media.rigSketch, "Pre-production humanoid rig planning sketch for Ray Delgado", "Rig planning / pre-production")}
+          ${figure(media.rigSketch, "Early humanoid rig planning sketch for Ray Delgado", "Early rig planning — final character used a Mixamo humanoid rig")}
           ${figure(media.animator, "Unity Animator Controller for Ray Delgado showing locomotion, crouch, cover and shooting states", "Implemented Unity Animator Controller", "rd-animator")}
         </div>
-        <div class="rd-flow" role="img" aria-label="Simplified Ray Delgado animation state structure">
-          <div><span>Base locomotion</span><strong>Idle · Walk · Run</strong></div>
+        <div class="rd-flow" role="img" aria-label="Ray Delgado animation pipeline">
+          <div><span>Animation sources</span><strong>Mixamo · Tracker mocap</strong></div>
           <i>→</i>
-          <div><span>Context</span><strong>Crouch · Cover</strong></div>
-          <i>+</i>
-          <div><span>Upper body</span><strong>Draw · Aim · Shoot</strong></div>
+          <div><span>Retargeting</span><strong>Rokoko · Blender</strong></div>
+          <i>→</i>
+          <div><span>Engine setup</span><strong>Unity Animator</strong></div>
         </div>
-      </section>
-
-      <section class="rd-section" aria-labelledby="rd-mocap-title">
-        <header class="rd-section-head">
-          <p class="rd-index">06</p>
-          <div>
-            <p class="technical-label">Motion capture</p>
-            <h3 id="rd-mocap-title">Using tracker mocap alongside Mixamo.</h3>
-          </div>
-          <p>I recorded tracker-based mocap for part of the animation set, then retargeted those clips in Blender with Rokoko's free retargeting add-on. Mixamo filled out the rest of the motion library before everything was assembled in Unity.</p>
-        </header>
-        <div class="rd-mocap-grid">
+        <div class="rd-mocap-grid" style="margin-top: 36px;">
           ${figure(media.mocap, "Tracker-based motion-capture test performed for the Ray Delgado project", "Tracker mocap test", "rd-mocap-shot")}
           <article class="rd-copy-card rd-mocap-copy">
-            <p class="technical-label">What it added</p>
-            <h4>A more hands-on animation pipeline.</h4>
-            <p>Using my own captured motion made the retargeting stage much easier to understand. It also showed me how different animation sources can be cleaned up, combined and prepared for the same character.</p>
+            <p class="technical-label">Tracker mocap</p>
+            <h4>Captured, retargeted, then combined with Mixamo.</h4>
+            <p>I recorded tracker-based mocap for part of the set and used Mixamo where it made sense to fill out the library. Retargeting the captured clips in Blender gave me a much clearer understanding of how animation from different sources can be prepared for one character before engine implementation.</p>
           </article>
         </div>
       </section>
 
       <section class="rd-section rd-reflection" aria-labelledby="rd-reflection-title">
         <header class="rd-section-head">
-          <p class="rd-index">07</p>
+          <p class="rd-index">06</p>
           <div>
             <p class="technical-label">Reflection</p>
-            <h3 id="rd-reflection-title">This project helped me keep the art side of my work alive.</h3>
+            <h3 id="rd-reflection-title">Why this project still matters to my Technical Art direction.</h3>
           </div>
-          <p>I chose this module because I was still exploring character design and modelling before I fully committed to technical art. I am glad I did: it gave me a much better understanding of a pipeline I am still interested in.</p>
+          <p>I chose this module while I was still seriously considering character design and modelling, before I had fully committed to Technical Art. I am glad I did — it gave me practical experience across a character pipeline I am still interested in.</p>
         </header>
         <div class="rd-reflection-grid">
           <article>
             <p class="technical-label">What I learned</p>
-            <h4>A proper character workflow</h4>
-            <p>It was my first time using sculpting seriously in a character workflow, and it pushed me into cloth simulation, character design, retopology, high-to-low baking, mocap retargeting and animation implementation instead of treating them as separate exercises.</p>
+            <h4>My first end-to-end character workflow</h4>
+            <p>It was the first time I used sculpting seriously in my workflow, and it pushed me into cloth simulation, character design, retopology, high-to-low baking, mocap retargeting and engine animation setup as one connected process.</p>
           </article>
           <article>
             <p class="technical-label">Where it connects to tech art</p>
-            <h4>Art knowledge I can build tools around</h4>
-            <p>It also meant I kept some of my artistic identity while moving toward technical art. Understanding the character pipeline from sculpt through retargeting and engine setup gives me useful context for future TA work around rigging, animation systems and tools for character artists. If I revisited Ray, I would start by refining the shoulder and hip skinning and adding basic facial controls.</p>
+            <h4>Useful context for character-focused TA work</h4>
+            <p>The project also let me keep the artistic side of my work while moving toward Technical Art. Having worked through the character pipeline myself gives me useful context for future work around rigging, retargeting, animation systems and artist-facing character tools. If I revisited Ray, I would first refine the shoulder and hip skinning and add basic facial controls.</p>
           </article>
         </div>
       </section>
@@ -211,11 +200,11 @@
     if (isRay) {
       hero.innerHTML = zoomImage(media.hero, "Ray Delgado hero render — dual-pistol pose against a stylised Miami sunset", "rd-hero-image");
       label.textContent = "Character art / Real-time animation";
-      summary.textContent = "A stylised 1970s Miami private investigator I designed and built from sculpt to game-ready character, then animated with a mix of mocap and Mixamo motions before implementing the final set in Unity.";
+      summary.textContent = "A stylised 1970s Miami private investigator built end to end: character design, sculpting, retopology, Substance texturing, mocap/Mixamo retargeting and Unity animation implementation.";
       meta.innerHTML = `
         <div><dt>Role</dt><dd>Character Artist · Animation Integration</dd></div>
-        <div><dt>Tools</dt><dd>Blender · Substance Painter · Unity · Mixamo · Rokoko</dd></div>
-        <div><dt>Outcome</dt><dd>Game-ready character + retargeted animation set · ≈60K tris</dd></div>`;
+        <div><dt>Tools</dt><dd>Blender · Substance 3D Painter · Unity · Mixamo · Rokoko</dd></div>
+        <div><dt>Outcome</dt><dd>Game-ready character · ≈60K tris · Unity animation set</dd></div>`;
       host.className = "rd-case-study-host";
       if (!host.querySelector(".rd-case-study")) host.innerHTML = caseStudyHtml;
     } else if (host.classList.contains("rd-case-study-host")) {
