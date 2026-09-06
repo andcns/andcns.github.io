@@ -1,39 +1,12 @@
-# Winterlight — final artist-first update
+# Ray Delgado page update v3
 
-This supersedes the previous build-button patch. Apply this one only.
+Extract this folder over the root of the current `andcns.github.io` repository.
 
-Replace:
+This update keeps the v2 hero/card/video changes and corrects the Ray Delgado pipeline wording to match the actual project:
 
-- `index.html`
-- `content/winterlight.js`
-- `winterlight.css`
-- `assets/images/winterlight/gun-wire-modern.webp`
-- `assets/images/winterlight/gun-wire-retro.webp`
+- Mixamo animations were used alongside tracker-based mocap.
+- Mocap clips were retargeted in Blender using the free Rokoko retargeting add-on.
+- Most normal detail was baked high-to-low in Substance Painter, which was also used for final texturing.
+- The reflection now connects that character pipeline experience more naturally to the later Technical Art direction.
 
-What changed:
-
-- Case study now opens with the runtime visual system instead of immersion research.
-- New order:
-  1. Technical-art system overview
-  2. 3D art / authorship
-  3. Research context
-  4. Problems / solutions
-  5. Ammo configuration
-  6. Outcome / reflection / trailer / build
-- Top summary now clearly presents Winterlight as a 3D-art-led Technical Art project.
-- Added a short role note explaining that this is a Technical Art case study, not a programming case study.
-- 3D modelling, texturing, enemy art and visual direction are presented before implementation/debugging work.
-- AI-assisted C# disclosure remains explicit without implying software-engineering authorship.
-- Research is retained as the constraint that required the system to be controlled and repeatable, rather than the opening story.
-- Enemy wording corrected to damage VFX rather than muzzle switching.
-- Retro / Modern comparison caption order corrected.
-- Personal Technical Art reflection retained.
-- Vlad Popescu, CRT asset, FreePBR and Pixabay credits retained.
-- Correct Modern / Retro wireframes retained at matching heights.
-- Mobile autoplay fix retained.
-- Bottom video is labelled `Trailer`.
-- `Download build here` CTA is included beneath the trailer and points to the GitHub Release asset:
-  `Project_Winterlight_Win.rar`
-- Cache version bumped to `v=8`.
-
-Upload the build as a GitHub Release asset before expecting the download CTA to work.
+Only Ray Delgado content plus cache-version references in `index.html` are changed.
