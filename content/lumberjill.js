@@ -1,18 +1,274 @@
-(function(){
-  const ROOT="./assets/images/lumberjill/";
-  const media={hero:`${ROOT}ui.webp`,jill:`${ROOT}character-01.webp`,jack:`${ROOT}character-02.webp`};
-  const normalize=v=>(v||"").toLowerCase().replace(/[^a-z0-9]/g,"");
-  const zoom=(src,alt)=>`<button class="zoomable-image" type="button" data-zoom-src="${src}" data-zoom-caption="${alt}" aria-label="Enlarge ${alt}"><img src="${src}" alt="${alt}" loading="lazy"/><span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 20 20"></path><path d="M10.5 7.5v6M7.5 10.5h6"></path></svg><span>Zoom</span></span></button>`;
-  const fig=(src,alt,cap)=>`<figure class="lj-figure">${zoom(src,alt)}<figcaption>${cap}</figcaption></figure>`;
-  const html=`<div class="lj-case-study">
-  <section class="lj-section"><header class="lj-head"><p class="lj-index">01</p><div><p class="technical-label">Team production / Visual ownership</p><h3>Adapting to a pipeline I had not worked in before.</h3></div><p>LumberJill was a four-person mobile management-game vertical slice. My role covered UI design and character art, but in practice I also helped define the visual language, prepare assets for mobile, integrate them in Unity and keep the art coherent with systems being built by the rest of the team.</p></header><div class="lj-stats"><div><span>Role</span><strong>UI Designer · Character Artist</strong></div><div><span>Engine</span><strong>Unity 6</strong></div><div><span>Target</span><strong>Mobile · Fixed isometric</strong></div><div><span>Team</span><strong>4 people</strong></div></div><div class="lj-note"><p class="technical-label">Authorship</p><p>I did not write the gameplay code. My Unity work focused on UI and asset integration, mobile readability, character presentation and testing the art in context.</p></div></section>
-  <section class="lj-section"><header class="lj-head"><p class="lj-index">02</p><div><p class="technical-label">Pre-production → visual system</p><h3>From rough sketches to a reusable visual language.</h3></div><p>I started with quick interface sketches around thumb reach, resource visibility, storage and customer orders. Those became mock-ups, then a modular family of wood-framed panels, arrows, buttons and icons reused across the workshop, job board, storage and yard.</p></header><div class="lj-process"><article><span>01</span><strong>Sketch</strong><p>Hierarchy, touch zones and information placement.</p></article><article><span>02</span><strong>Mock-up</strong><p>Workshop, storage, yard and progression screens.</p></article><article><span>03</span><strong>Production assets</strong><p>Reusable wood panels, arrows, buttons and icons.</p></article><article><span>04</span><strong>Unity</strong><p>Anchoring, scaling, readability and in-game iteration.</p></article></div><div class="lj-feature">${fig(media.hero,"LumberJill final workshop UI and visual direction","Final in-game presentation")}</div><div class="lj-copy"><p class="technical-label">Art direction</p><h4>One language across UI and world.</h4><p>Wood grain, dark outlines, warm amber tones and slightly exaggerated shapes tied the UI to the workshop itself. The goal was a system that felt authored as one game rather than a collection of separate screens.</p></div></section>
-  <section class="lj-section"><header class="lj-head"><p class="lj-index">03</p><div><p class="technical-label">Unity integration</p><h3>Designing around systems built by the rest of the team.</h3></div><p>The interface had to make a fairly dense management loop readable on a phone: lumber prices, money, stock, orders, timers, storage and navigation. I tested UI scalability and readability in Unity's simulator and checked screens repeatedly in the actual isometric gameplay context.</p></header><div class="lj-flow"><div><span>Design</span><strong>Hierarchy · interaction</strong></div><i>→</i><div><span>Asset production</span><strong>Photoshop · Illustrator · Blender</strong></div><i>→</i><div><span>Engine</span><strong>Unity integration · testing</strong></div></div><div class="lj-copy"><p class="technical-label">What changed for me</p><h4>The asset was only finished when it worked in-engine.</h4><p>This was one of the projects that made implementation feel like part of the art job rather than something that happened after the art was made.</p></div></section>
-  <section class="lj-section"><header class="lj-head"><p class="lj-index">04</p><div><p class="technical-label">Character art / Mobile constraints</p><h3>Low-poly characters built to read from the gameplay camera.</h3></div><p>I modelled Jack and Jill in a deliberately simple PS1-inspired style, around a roughly 1K-polygon target with 512×512 textures. The priority was silhouette readability, quick recognition from the fixed isometric camera and assets light enough for mobile.</p></header><div class="lj-chars">${fig(media.jill,"Jill low-poly character render","Jill · game character")}${fig(media.jack,"Jack low-poly character render","Jack · game character")}</div><div class="lj-copy"><p class="technical-label">In-engine iteration</p><h4>Testing from the camera that mattered.</h4><p>I repeatedly checked silhouettes, materials and animation smoothness in play rather than judging the characters only from close-up renders. That pushed me toward thinking in terms of production assets, not isolated portfolio pieces.</p></div></section>
-  <section class="lj-section"><header class="lj-head"><p class="lj-index">05</p><div><p class="technical-label">SCRUM / Collaboration</p><h3>Learning why production structure matters.</h3></div><p>We attempted to work through Scrum and Agile practices with sprints, meetings and a backlog, but we did not apply the framework consistently enough. Sprint goals were often loose, dependencies were not surfaced early enough, and uneven participation across the four-person team put us behind.</p></header><div class="lj-grid"><article><p class="technical-label">What worked</p><h4>We still came close to the intended vertical slice.</h4><p>The core loop was there: buy lumber, process it through machines, build products and deliver them to customers. I am still proud of how much of the intended art direction made it into the playable build.</p></article><article><p class="technical-label">What I learned</p><h4>Meetings alone do not make a team Agile.</h4><p>I came away understanding the value of clear sprint targets, realistic scope, visible blockers and active participation from every discipline. Those lessons now affect how I approach dependencies much earlier.</p></article></div></section>
-  <section class="lj-section"><header class="lj-head"><p class="lj-index">06</p><div><p class="technical-label">Outcome / Reflection</p><h3>The project that made engine integration feel like part of my art role.</h3></div><p>The final build was not perfect: we overscoped, optimisation needed more work and a late shop-system regression blocked part of the tutorial. But we came very close to a complete vertical slice, and I am proud of the art and of how quickly I adapted to an unfamiliar production pipeline.</p></header><div class="lj-grid"><article><p class="technical-label">Visual ownership</p><h4>Working across disciplines.</h4><p>I stopped thinking of UI, characters and engine implementation as isolated tasks. The useful work was making them function together while keeping the visual language consistent.</p></article><article><p class="technical-label">Why it matters now</p><h4>A step toward Technical Art.</h4><p>LumberJill made me more comfortable moving between asset creation and Unity, collaborating with programmers and adapting artwork around a live game. That bridge between artistic intent and implementation is a big part of why Technical Art became the direction I wanted to pursue.</p></article></div><div class="lj-links"><a href="https://abishekr.itch.io/lumberjill" target="_blank" rel="noreferrer">View on itch.io ↗</a><a href="https://www.youtube.com/watch?v=X7rkKBnHKHw" target="_blank" rel="noreferrer">Watch full demo ↗</a></div></section>
-  </div>`;
-  function reset(h){h.className="dialog-placeholder";h.innerHTML='<p class="technical-label">Case study / Next implementation pass</p><p>The full visual breakdown, problem, solution and contribution sections will be assembled with you project by project.</p>'}
-  function sync(){const t=document.querySelector("#dialog-title"),hero=document.querySelector("#dialog-hero"),label=document.querySelector("#dialog-label"),sum=document.querySelector("#dialog-summary"),meta=document.querySelector("#dialog-meta"),host=document.querySelector(".dialog-placeholder,.lj-case-study-host,.rd-case-study-host,.dialog-case-study-host,.cs-case-study-host");if(!t||!hero||!host)return;const is=normalize(t.textContent)==="lumberjilltherpg";if(is){hero.innerHTML=zoom(media.hero,"LumberJill final workshop presentation");label.textContent="UI Design · Character Art · Art Direction · Unity";sum.textContent="A four-person mobile management-game vertical slice where I owned the UI and character art, helped establish the visual language, and carried assets from pre-production through Unity integration and mobile testing.";meta.innerHTML='<div><dt>Role</dt><dd>UI Designer · Character Artist</dd></div><div><dt>Tools</dt><dd>Unity 6 · Blender · Substance 3D Painter · Photoshop · Illustrator</dd></div><div><dt>Focus</dt><dd>Visual ownership · Mobile UI · Engine integration · Team production</dd></div>';host.className="lj-case-study-host";if(!host.querySelector(".lj-case-study"))host.innerHTML=html}else if(host.classList.contains("lj-case-study-host"))reset(host)}
-  sync();const t=document.querySelector("#dialog-title");if(t)new MutationObserver(sync).observe(t,{childList:true,subtree:true});const d=document.querySelector("#project-dialog");if(d)new MutationObserver(()=>{if(!d.open){const h=d.querySelector(".lj-case-study-host");if(h)reset(h)}else sync()}).observe(d,{attributes:true,attributeFilter:["open"]});
+(function () {
+  const ROOT = "./assets/images/lumberjill/";
+  const media = {
+    hero: `${ROOT}ui.webp`,
+    jill: `${ROOT}character-01.webp`,
+    jack: `${ROOT}character-02.webp`,
+    preprodData: `${ROOT}preproduction-board.b64.txt`
+  };
+
+  const normalizeTitle = (value) => (value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  const zoomImage = (src, alt, className = "") => `
+    <button class="zoomable-image ${className}" type="button" data-zoom-src="${src}" data-zoom-caption="${alt}" aria-label="Enlarge ${alt}">
+      <img src="${src}" alt="${alt}" loading="lazy" />
+      <span class="zoom-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="10.5" cy="10.5" r="6.5"></circle>
+          <path d="M15.5 15.5 20 20"></path>
+          <path d="M10.5 7.5v6M7.5 10.5h6"></path>
+        </svg>
+        <span>Zoom</span>
+      </span>
+    </button>`;
+
+  const b64Figure = (path, alt, caption) => `
+    <figure class="lj-figure lj-b64-figure">
+      <button class="zoomable-image lj-b64-image" type="button" data-b64-path="${path}" data-zoom-caption="${alt}" aria-label="Enlarge ${alt}" disabled>
+        <span class="lj-image-loading technical-label">Loading process board…</span>
+        <img alt="${alt}" loading="lazy" />
+        <span class="zoom-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 20 20"></path><path d="M10.5 7.5v6M7.5 10.5h6"></path></svg><span>Zoom</span>
+        </span>
+      </button>
+      <figcaption>${caption}</figcaption>
+    </figure>`;
+
+  const caseStudyHtml = `
+    <div class="lj-case-study">
+      <section class="lj-section" aria-labelledby="lj-context-title">
+        <header class="lj-section-head">
+          <p class="lj-index">01</p>
+          <div>
+            <p class="technical-label">Team production / Visual ownership</p>
+            <h3 id="lj-context-title">Owning the visual side of a pipeline I was still learning.</h3>
+          </div>
+          <p>LumberJill was a four-person mobile management-game vertical slice. I joined as UI Designer and Character Artist, then took responsibility for much of the player-facing visual language: early UI planning, the reusable interface style, both main characters, and getting that work functioning inside Unity.</p>
+        </header>
+        <div class="lj-stat-strip" aria-label="LumberJill project summary">
+          <div><span>Role</span><strong>UI Designer · Character Artist</strong></div>
+          <div><span>Engine</span><strong>Unity 6</strong></div>
+          <div><span>Target</span><strong>Android · Fixed isometric</strong></div>
+          <div><span>Team</span><strong>4 people · Scrum-based workflow</strong></div>
+        </div>
+      </section>
+
+      <section class="lj-section" aria-labelledby="lj-authorship-title">
+        <header class="lj-section-head">
+          <p class="lj-index">02</p>
+          <div>
+            <p class="technical-label">Authorship / Team boundaries</p>
+            <h3 id="lj-authorship-title">What I owned, and what belonged to the rest of the team.</h3>
+          </div>
+          <p>This was collaborative work, so I want the boundary to be as clear as it is on Winterlight. My contribution was the art, interface design and Unity-side implementation of those assets — not the underlying gameplay programming.</p>
+        </header>
+        <div class="lj-ownership-grid">
+          <article class="lj-ownership-card">
+            <p class="technical-label">Authored / Owned by me</p>
+            <h4>Visual production and integration</h4>
+            <ul>
+              <li>UI direction, layout sketches, mock-ups and the modular wood-themed visual language.</li>
+              <li>Final UI art across the HUD, storage, job board, navigation and progression screens.</li>
+              <li>Jack and Jill: low-poly modelling, texturing and character presentation.</li>
+              <li>Unity UI integration, anchors/layout behaviour, mobile readability and visual iteration.</li>
+              <li>Character silhouette, materials and animation-readability testing from the gameplay camera.</li>
+              <li>Art-side iteration as the programmer's systems came online.</li>
+            </ul>
+          </article>
+          <article class="lj-ownership-card lj-disclosure">
+            <p class="technical-label">Team / Not authored by me</p>
+            <h4>Collaborative production</h4>
+            <ul>
+              <li>Core gameplay code, production systems, crafting logic, inventory/storage behaviour and most runtime data flow were built by the team's programmer.</li>
+              <li>Environment art and a large set of product props were produced by another 3D/environment artist.</li>
+              <li>Audio and level-design responsibilities were owned elsewhere in the team.</li>
+              <li>The final game structure, sprint planning and delivery were team responsibilities.</li>
+              <li>I integrated my work against those systems in Unity rather than claiming their implementation.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="lj-section" aria-labelledby="lj-preprod-title">
+        <header class="lj-section-head">
+          <p class="lj-index">03</p>
+          <div>
+            <p class="technical-label">Pre-production → final look</p>
+            <h3 id="lj-preprod-title">The rough sketches are part of the story.</h3>
+          </div>
+          <p>I started with quick notes around resource hierarchy, thumb-friendly navigation, customer orders and storage. Those rough ideas became a proper screen mock-up, then a reusable kit of wood panels and icons, and finally the interfaces used inside the game.</p>
+        </header>
+
+        ${b64Figure(media.preprodData, "LumberJill UI process board showing original sketch, mock-up, modular UI elements and final storage screen", "Original sketch → mock-up → reusable UI kit → final screen")}
+
+        <div class="lj-final-compare">
+          <article class="lj-copy-card">
+            <p class="technical-label">What carried through</p>
+            <h4>Hierarchy first, styling second.</h4>
+            <p>The early sketch already established the main resource bar, order area, storage access and route into the lumber yard. The final look is much more polished, but the underlying hierarchy survived because it was solving the right interaction problems before I worried about surface detail.</p>
+          </article>
+          <figure class="lj-figure lj-final-shot">
+            ${zoomImage(media.hero, "Final LumberJill in-game UI and workshop presentation")}
+            <figcaption>Final in-game presentation</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="lj-section" aria-labelledby="lj-system-title">
+        <header class="lj-section-head">
+          <p class="lj-index">04</p>
+          <div>
+            <p class="technical-label">UI system / Unity integration</p>
+            <h3 id="lj-system-title">The interface became a kit, not a collection of one-off screens.</h3>
+          </div>
+          <p>I reused the same wood frames, arrows, paper notes, warm palette and outline treatment across different player-facing systems. That gave the game a consistent identity and made it much easier to adapt screens while the underlying gameplay was still changing.</p>
+        </header>
+        <div class="lj-system-notes">
+          <article><span>01</span><strong>Design</strong><p>Sketch information hierarchy and touch-friendly routes before polishing.</p></article>
+          <article><span>02</span><strong>Build the kit</strong><p>Create reusable panels, arrows, notes and icon treatments instead of redrawing each menu.</p></article>
+          <article><span>03</span><strong>Integrate</strong><p>Set up the visual side in Unity and adapt it to systems owned by the programmer.</p></article>
+          <article><span>04</span><strong>Test in context</strong><p>Check scaling, readability and interaction from the actual mobile/isometric presentation.</p></article>
+        </div>
+        <article class="lj-role-note">
+          <p class="technical-label">What changed for me</p>
+          <p>This was one of the projects that made me stop treating implementation as something that happened after the art was finished. I used Unity's simulator to test UI scalability and readability, and I kept iterating until the work made sense inside the live game rather than only in a mock-up.</p>
+        </article>
+      </section>
+
+      <section class="lj-section" aria-labelledby="lj-character-title">
+        <header class="lj-section-head">
+          <p class="lj-index">05</p>
+          <div>
+            <p class="technical-label">Character art / Mobile constraints</p>
+            <h3 id="lj-character-title">Simple characters designed for the camera that mattered.</h3>
+          </div>
+          <p>I built Jack and Jill in a deliberately low-poly, PS1-inspired style, around a roughly 1K-polygon target with 512×512 textures. The aim was readability and consistency with the game, not close-up character complexity.</p>
+        </header>
+        <div class="lj-character-grid">
+          <figure class="lj-figure">${zoomImage(media.jill, "Jill low-poly character render")}<figcaption>Jill · final character</figcaption></figure>
+          <figure class="lj-figure">${zoomImage(media.jack, "Jack low-poly character render")}<figcaption>Jack · final character</figcaption></figure>
+        </div>
+        <article class="lj-copy-card">
+          <p class="technical-label">In-engine iteration</p>
+          <h4>The asset was only finished when it read properly in play.</h4>
+          <p>I repeatedly checked silhouette readability, materials and animation smoothness from the fixed isometric gameplay camera. That pushed me toward judging assets by how well they serve the game rather than by how impressive they look in isolation.</p>
+        </article>
+      </section>
+
+      <section class="lj-section" aria-labelledby="lj-team-title">
+        <header class="lj-section-head">
+          <p class="lj-index">06</p>
+          <div>
+            <p class="technical-label">SCRUM / Collaboration</p>
+            <h3 id="lj-team-title">The project that made Agile stop feeling theoretical.</h3>
+          </div>
+          <p>We attempted to work with Scrum through sprints, meetings, task ownership and a backlog. In practice we did not apply it consistently enough. Sprint goals were often loose, some dependencies surfaced too late, and uneven participation across the four-person team put extra pressure on the rest of us.</p>
+        </header>
+        <div class="lj-team-grid">
+          <article>
+            <p class="technical-label">What worked</p>
+            <h4>We still came very close to the intended vertical slice.</h4>
+            <p>The main loop was there: buy lumber, process it through machines, build products and deliver them to customers. I am proud of how much of the intended visual identity made it into the playable build.</p>
+          </article>
+          <article>
+            <p class="technical-label">What I learned</p>
+            <h4>Meetings alone do not make a team Agile.</h4>
+            <p>I came away understanding why clear sprint goals, visible blockers, realistic scope and active participation from every discipline matter. When those things slip, art and code dependencies compound very quickly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="lj-section lj-reflection" aria-labelledby="lj-reflection-title">
+        <header class="lj-section-head">
+          <p class="lj-index">07</p>
+          <div>
+            <p class="technical-label">Outcome / Reflection</p>
+            <h3 id="lj-reflection-title">Not a perfect production, but one I learned a lot from.</h3>
+          </div>
+          <p>The final build was not perfect: we overscoped, optimisation needed more work and a late shop-system regression blocked part of the tutorial. We were still very close to a complete vertical slice, and I am proud of the art and of my capacity to adapt and keep integrating work as the project changed around me.</p>
+        </header>
+        <div class="lj-reflection-grid">
+          <article>
+            <p class="technical-label">What I am proud of</p>
+            <h4>Taking visual ownership.</h4>
+            <p>I moved from rough sketches to a consistent UI language and two finished game characters, then carried that work into Unity instead of stopping at asset creation.</p>
+          </article>
+          <article>
+            <p class="technical-label">Why it matters now</p>
+            <h4>A useful step toward Technical Art.</h4>
+            <p>LumberJill made me more comfortable moving between art production, engine integration and collaboration with programmers. It helped me realise that I enjoy the point where artistic intent has to survive contact with a real system.</p>
+          </article>
+        </div>
+        <div class="lj-links" aria-label="LumberJill project links">
+          <a href="https://abishekr.itch.io/lumberjill" target="_blank" rel="noreferrer">View on itch.io <span aria-hidden="true">↗</span></a>
+          <a href="https://www.youtube.com/watch?v=X7rkKBnHKHw" target="_blank" rel="noreferrer">Watch full demo <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </div>`;
+
+  async function hydrateB64Images(root) {
+    const targets = root.querySelectorAll("[data-b64-path]");
+    for (const button of targets) {
+      if (button.dataset.b64Loaded === "true") continue;
+      try {
+        const response = await fetch(button.dataset.b64Path, { cache: "force-cache" });
+        if (!response.ok) throw new Error("Image data unavailable");
+        const b64 = (await response.text()).trim();
+        const src = `data:image/webp;base64,${b64}`;
+        const image = button.querySelector("img");
+        image.src = src;
+        button.dataset.zoomSrc = src;
+        button.dataset.b64Loaded = "true";
+        button.disabled = false;
+        const loading = button.querySelector(".lj-image-loading");
+        if (loading) loading.remove();
+      } catch (error) {
+        const loading = button.querySelector(".lj-image-loading");
+        if (loading) loading.textContent = "Process image unavailable";
+      }
+    }
+  }
+
+  function restoreDefaultPlaceholder(host) {
+    if (!host) return;
+    host.className = "dialog-placeholder";
+    host.innerHTML = `<p class="technical-label">Case study / Next implementation pass</p><p>The full visual breakdown, problem, solution and contribution sections will be assembled with you project by project.</p>`;
+  }
+
+  function syncDialog() {
+    const title = document.querySelector("#dialog-title");
+    const hero = document.querySelector("#dialog-hero");
+    const label = document.querySelector("#dialog-label");
+    const summary = document.querySelector("#dialog-summary");
+    const meta = document.querySelector("#dialog-meta");
+    const host = document.querySelector(".dialog-placeholder, .lj-case-study-host, .rd-case-study-host, .dialog-case-study-host, .cs-case-study-host");
+    if (!title || !hero || !host) return;
+
+    const isLumberJill = normalizeTitle(title.textContent) === "lumberjilltherpg";
+    if (isLumberJill) {
+      hero.innerHTML = zoomImage(media.hero, "LumberJill final UI and workshop presentation", "lj-hero-image");
+      label.textContent = "UI Design · Character Art · Unity Integration";
+      summary.textContent = "A four-person mobile management-game vertical slice where I owned the UI and character art, developed the visual language, and carried that work from rough pre-production through Unity integration and mobile testing.";
+      meta.innerHTML = `
+        <div><dt>Role</dt><dd>UI Designer · Character Artist</dd></div>
+        <div><dt>Tools</dt><dd>Unity 6 · Blender · Substance 3D Painter · Photoshop · Illustrator</dd></div>
+        <div><dt>Focus</dt><dd>Visual ownership · Mobile UI · Engine integration · Team production</dd></div>`;
+      host.className = "lj-case-study-host";
+      if (!host.querySelector(".lj-case-study")) host.innerHTML = caseStudyHtml;
+      hydrateB64Images(host);
+    } else if (host.classList.contains("lj-case-study-host")) {
+      restoreDefaultPlaceholder(host);
+    }
+  }
+
+  syncDialog();
+  const title = document.querySelector("#dialog-title");
+  if (title) new MutationObserver(syncDialog).observe(title, { childList: true, subtree: true });
+  const dialog = document.querySelector("#project-dialog");
+  if (dialog) new MutationObserver(() => {
+    if (!dialog.open) {
+      const host = dialog.querySelector(".lj-case-study-host");
+      if (host) restoreDefaultPlaceholder(host);
+    } else syncDialog();
+  }).observe(dialog, { attributes: true, attributeFilter: ["open"] });
 })();
