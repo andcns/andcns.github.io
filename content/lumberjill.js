@@ -4,7 +4,8 @@
     hero: `${ROOT}ui.webp`,
     jill: `${ROOT}character-01.webp`,
     jack: `${ROOT}character-02.webp`,
-    preprodData: `${ROOT}preproduction-board.b64.txt`
+    preprodData: `${ROOT}preproduction-board-v2.b64.txt`,
+    jobBoardData: `${ROOT}job-board.b64.txt`
   };
 
   const normalizeTitle = (value) => (value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -22,10 +23,10 @@
       </span>
     </button>`;
 
-  const b64Figure = (path, alt, caption) => `
-    <figure class="lj-figure lj-b64-figure">
+  const b64Figure = (path, alt, caption, className = "") => `
+    <figure class="lj-figure lj-b64-figure ${className}">
       <button class="zoomable-image lj-b64-image" type="button" data-b64-path="${path}" data-zoom-caption="${alt}" aria-label="Enlarge ${alt}" disabled>
-        <span class="lj-image-loading technical-label">Loading process board…</span>
+        <span class="lj-image-loading technical-label">Loading image…</span>
         <img alt="${alt}" loading="lazy" />
         <span class="zoom-hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 20 20"></path><path d="M10.5 7.5v6M7.5 10.5h6"></path></svg><span>Zoom</span>
@@ -60,7 +61,7 @@
             <p class="technical-label">Authorship / Team boundaries</p>
             <h3 id="lj-authorship-title">What I owned, and what belonged to the rest of the team.</h3>
           </div>
-          <p>This was collaborative work, so I want the boundary to be as clear as it is on Winterlight. My contribution was the art, interface design and Unity-side implementation of those assets — not the underlying gameplay programming.</p>
+          <p>This was collaborative work, so the boundary matters. My contribution was the interface and character art, plus the Unity-side implementation and iteration of those assets — not the underlying gameplay programming.</p>
         </header>
         <div class="lj-ownership-grid">
           <article class="lj-ownership-card">
@@ -69,9 +70,9 @@
             <ul>
               <li>UI direction, layout sketches, mock-ups and the modular wood-themed visual language.</li>
               <li>Final UI art across the HUD, storage, job board, navigation and progression screens.</li>
-              <li>Jack and Jill: low-poly modelling, texturing and character presentation.</li>
-              <li>Unity UI integration, anchors/layout behaviour, mobile readability and visual iteration.</li>
-              <li>Character silhouette, materials and animation-readability testing from the gameplay camera.</li>
+              <li>Jack and Jill: low-poly modelling, hand-painted texturing and character presentation.</li>
+              <li>Unity UI integration using anchors, layout groups and content-size fitters where needed.</li>
+              <li>Mobile readability, character silhouette and animation-readability testing in-engine.</li>
               <li>Art-side iteration as the programmer's systems came online.</li>
             </ul>
           </article>
@@ -79,11 +80,10 @@
             <p class="technical-label">Team / Not authored by me</p>
             <h4>Collaborative production</h4>
             <ul>
-              <li>Core gameplay code, production systems, crafting logic, inventory/storage behaviour and most runtime data flow were built by the team's programmer.</li>
-              <li>Environment art and a large set of product props were produced by another 3D/environment artist.</li>
-              <li>Audio and level-design responsibilities were owned elsewhere in the team.</li>
-              <li>The final game structure, sprint planning and delivery were team responsibilities.</li>
-              <li>I integrated my work against those systems in Unity rather than claiming their implementation.</li>
+              <li>Abi owned the core gameplay programming and systems design, including the production pipeline and resource-management logic.</li>
+              <li>Jamie produced the product models, implemented the level, built the stock-market panel logic and developed the tutorial.</li>
+              <li>Seb produced environment props and handled much of the asset organisation, cleanup and Blender-to-Unity export preparation.</li>
+              <li>Sprint planning, integration and final delivery were shared team responsibilities.</li>
             </ul>
           </article>
         </div>
@@ -96,21 +96,18 @@
             <p class="technical-label">Pre-production → final look</p>
             <h3 id="lj-preprod-title">The rough sketches are part of the story.</h3>
           </div>
-          <p>I started with quick notes around resource hierarchy, thumb-friendly navigation, customer orders and storage. Those rough ideas became a proper screen mock-up, then a reusable kit of wood panels and icons, and finally the interfaces used inside the game.</p>
+          <p>I started with quick notes around resource hierarchy, thumb-friendly navigation, customer orders and storage. Those ideas became a proper screen mock-up, then a reusable kit of wood panels and icons, and finally the interfaces used inside the game.</p>
         </header>
 
-        ${b64Figure(media.preprodData, "LumberJill UI process board showing original sketch, mock-up, modular UI elements and final storage screen", "Original sketch → mock-up → reusable UI kit → final screen")}
+        ${b64Figure(media.preprodData, "LumberJill UI process board showing original sketch, mock-up, reusable UI elements and final storage screen", "Original sketch → mock-up → reusable UI kit → final storage screen", "lj-process-board")}
 
         <div class="lj-final-compare">
           <article class="lj-copy-card">
             <p class="technical-label">What carried through</p>
             <h4>Hierarchy first, styling second.</h4>
-            <p>The early sketch already established the main resource bar, order area, storage access and route into the lumber yard. The final look is much more polished, but the underlying hierarchy survived because it was solving the right interaction problems before I worried about surface detail.</p>
+            <p>The early sketch already established the main resource bar, order area, storage access and route into the lumber yard. The styling changed heavily, but the hierarchy survived because it was solving the right interaction problems before I worried about polish.</p>
           </article>
-          <figure class="lj-figure lj-final-shot">
-            ${zoomImage(media.hero, "Final LumberJill in-game UI and workshop presentation")}
-            <figcaption>Final in-game presentation</figcaption>
-          </figure>
+          ${b64Figure(media.jobBoardData, "Final LumberJill job board interface implemented in the workshop", "Final job-board implementation", "lj-final-shot")}
         </div>
       </section>
 
@@ -131,7 +128,7 @@
         </div>
         <article class="lj-role-note">
           <p class="technical-label">What changed for me</p>
-          <p>This was one of the projects that made me stop treating implementation as something that happened after the art was finished. I used Unity's simulator to test UI scalability and readability, and I kept iterating until the work made sense inside the live game rather than only in a mock-up.</p>
+          <p>This was one of the projects that made me stop treating implementation as something that happened after the art was finished. I used Unity's simulator to test UI scalability and readability, and kept iterating until the work made sense inside the live game rather than only in a mock-up.</p>
         </article>
       </section>
 
@@ -203,6 +200,15 @@
           <a href="https://abishekr.itch.io/lumberjill" target="_blank" rel="noreferrer">View on itch.io <span aria-hidden="true">↗</span></a>
           <a href="https://www.youtube.com/watch?v=X7rkKBnHKHw" target="_blank" rel="noreferrer">Watch full demo <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="lj-credits" aria-label="LumberJill team credits">
+          <p class="technical-label">Team credits / LumberJacks</p>
+          <div class="lj-credit-grid">
+            <div><strong>Andrei</strong><span>UI Design · Character Art · Unity integration</span></div>
+            <div><strong>Abi</strong><span>Programming · Systems Design</span></div>
+            <div><strong>Jamie</strong><span>Product Art · Level Design · Tutorial / Stock Market</span></div>
+            <div><strong>Seb</strong><span>Environment Props · Asset Pipeline</span></div>
+          </div>
+        </div>
       </section>
     </div>`;
 
@@ -224,7 +230,7 @@
         if (loading) loading.remove();
       } catch (error) {
         const loading = button.querySelector(".lj-image-loading");
-        if (loading) loading.textContent = "Process image unavailable";
+        if (loading) loading.textContent = "Image unavailable";
       }
     }
   }
@@ -252,7 +258,7 @@
       meta.innerHTML = `
         <div><dt>Role</dt><dd>UI Designer · Character Artist</dd></div>
         <div><dt>Tools</dt><dd>Unity 6 · Blender · Substance 3D Painter · Photoshop · Illustrator</dd></div>
-        <div><dt>Focus</dt><dd>Visual ownership · Mobile UI · Engine integration · Team production</dd></div>`;
+        <div><dt>Outcome</dt><dd>Near-complete mobile vertical slice · Team production</dd></div>`;
       host.className = "lj-case-study-host";
       if (!host.querySelector(".lj-case-study")) host.innerHTML = caseStudyHtml;
       hydrateB64Images(host);
@@ -262,13 +268,19 @@
   }
 
   syncDialog();
+
   const title = document.querySelector("#dialog-title");
   if (title) new MutationObserver(syncDialog).observe(title, { childList: true, subtree: true });
+
   const dialog = document.querySelector("#project-dialog");
-  if (dialog) new MutationObserver(() => {
-    if (!dialog.open) {
-      const host = dialog.querySelector(".lj-case-study-host");
-      if (host) restoreDefaultPlaceholder(host);
-    } else syncDialog();
-  }).observe(dialog, { attributes: true, attributeFilter: ["open"] });
+  if (dialog) {
+    new MutationObserver(() => {
+      if (!dialog.open) {
+        const host = dialog.querySelector(".lj-case-study-host");
+        if (host) restoreDefaultPlaceholder(host);
+      } else {
+        syncDialog();
+      }
+    }).observe(dialog, { attributes: true, attributeFilter: ["open"] });
+  }
 })();
