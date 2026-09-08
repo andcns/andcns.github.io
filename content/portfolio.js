@@ -35,11 +35,11 @@ window.PORTFOLIO_CONTENT = {
     {
       slug: "lumberjill",
       title: "LumberJill: The RPG",
-      label: "Team production · Frontier Games brief",
-      role: "UI designer / artist · Character artist",
-      tools: "Unity · Blender · Photoshop · Illustrator",
-      outcome: "Digital Shark Expo nominee",
-      summary: "A collaborative mobile management-sim vertical slice with authored UI, characters and major visual-direction contributions.",
+      label: "UI · Character art · Unity integration",
+      role: "UI designer · Character artist",
+      tools: "Unity 6 · Blender · Substance 3D Painter · Photoshop · Illustrator",
+      outcome: "Near-complete mobile vertical slice · Digital Shark Expo nominee",
+      summary: "A four-person mobile management-game project where I owned the UI and character art, helped establish the visual language, and adapted the work from pre-production through Unity integration and mobile testing.",
       image: "./assets/images/lumberjill/ui.webp"
     },
     {
