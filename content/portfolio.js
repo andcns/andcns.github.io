@@ -7,7 +7,7 @@ window.PORTFOLIO_CONTENT = {
       role: "Solo developer / technical artist",
       tools: "Unity 6 / URP · C# · Blender · Substance 3D Painter",
       outcome: "74 · First-class dissertation · Digital Shark Expo nominee",
-      summary: "A controlled FPS prototype built around a system-wide runtime transition between modern 3D and 1990s-inspired presentation while gameplay remains mechanically consistent.",
+      summary: "A controlled FPS prototype built around a runtime transition between modern 3D and 1990s-inspired presentation while the gameplay state stays consistent.",
       image: "./assets/images/winterlight/cover.webp",
       featured: true
     },
@@ -18,17 +18,17 @@ window.PORTFOLIO_CONTENT = {
       role: "Character artist · Animation integration",
       tools: "Blender · Substance 3D Painter · Unity · Mixamo · Rokoko",
       outcome: "Game-ready character · ≈60K tris · Unity animation set",
-      summary: "A 1970s Miami private eye built end to end: sculpt, retopology, Substance texturing, tracker mocap/Mixamo retargeting and Unity animation implementation.",
+      summary: "A 1970s Miami private eye taken from sculpt and retopology through Substance texturing, mocap/Mixamo retargeting and Unity animation setup.",
       image: "./assets/images/ray-delgado/hero-card.webp"
     },
     {
       slug: "cybershadows",
       title: "CyberShadows",
       label: "Unreal Engine character implementation",
-      role: "Character artist · Level assembly · Blueprint implementation",
+      role: "Character artist · Level assembly · Unreal integration",
       tools: "Unreal Engine 5 · Blender · Substance Painter",
-      outcome: "Playable character and enemy authored and implemented",
-      summary: "A third-person action prototype featuring two fully authored characters, level assembly and gameplay implementation.",
+      outcome: "Playable start-to-finish vertical slice",
+      summary: "A third-person action prototype combining original character art, stylised rendering, level/UI design and Unreal integration.",
       image: null,
       imagePending: "Recovered project · Media capture pending"
     },
@@ -39,17 +39,17 @@ window.PORTFOLIO_CONTENT = {
       role: "UI designer · Character artist",
       tools: "Unity 6 · Blender · Substance 3D Painter · Photoshop · Illustrator",
       outcome: "Near-complete mobile vertical slice · Digital Shark Expo nominee",
-      summary: "A four-person mobile management-game project where I owned the UI and character art, helped establish the visual language, and adapted the work from pre-production through Unity integration and mobile testing.",
+      summary: "A four-person mobile management-game project where I owned the UI and character art, helped establish the visual language and carried that work into Unity.",
       image: "./assets/images/lumberjill/ui.webp"
     },
     {
       slug: "gladiator-ascendant",
       title: "Gladiator Ascendant",
-      label: "Global Game Jam 2026",
-      role: "Visual direction · Character art · Procedural support",
+      label: "Global Game Jam 2026 · Case study in progress",
+      role: "Visual direction · Character art",
       tools: "Blender · Geometry Nodes · Unity",
-      outcome: "Four-character set and reusable scatter workflow",
-      summary: "A PSX-inspired arena prototype created through rapid character production and a procedural environment-scatter workflow.",
+      outcome: "Case study and procedural reconstruction in progress",
+      summary: "A PSX-inspired arena prototype created during Global Game Jam 2026. The full breakdown is being held until the supporting procedural-workflow evidence is ready.",
       image: "./assets/images/gladiator/characters.webp"
     }
   ],
@@ -57,7 +57,7 @@ window.PORTFOLIO_CONTENT = {
     {
       title: "Houdini Reactor Fracture HDA",
       label: "Procedural tool study",
-      contribution: "Built a reusable fracture workflow with exposed artist controls and tested it through Houdini Engine in Unreal.",
+      contribution: "A university fracture-tool study with exposed controls and Houdini Engine testing in Unreal.",
       image: "./assets/images/houdini/hda.webp",
       images: [
         "./assets/images/houdini/hda.webp",
