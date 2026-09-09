@@ -50,7 +50,8 @@ window.PORTFOLIO_CONTENT = {
       tools: "Blender · Geometry Nodes · Unity",
       outcome: "Case study and procedural reconstruction in progress",
       summary: "A PSX-inspired arena prototype created during Global Game Jam 2026. The full breakdown is being held until the supporting procedural-workflow evidence is ready.",
-      image: "./assets/images/gladiator/characters.webp"
+      image: "./assets/images/gladiator/characters.webp",
+      wip: true
     }
   ],
   otherWork: [
