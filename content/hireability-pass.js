@@ -6,9 +6,19 @@
     if (node) node.textContent = value;
   }
 
-  function hide(root, selector) {
-    const node = root.querySelector(selector);
-    if (node) node.hidden = true;
+  function patchHomepage() {
+    const intro = document.querySelector(".intro-copy");
+    if (!intro || intro.querySelector(".intro-contact")) return;
+    const summary = intro.querySelector(".intro-summary");
+    if (!summary) return;
+
+    const links = document.createElement("div");
+    links.className = "intro-contact";
+    links.innerHTML = `
+      <a href="mailto:andreipurcareata@gmail.com">Email <span aria-hidden="true">↗</span></a>
+      <a href="https://www.linkedin.com/in/andreicns">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="./assets/files/Andrei-Purcareata-CV.pdf">CV <span aria-hidden="true">↓</span></a>`;
+    summary.after(links);
   }
 
   function patchGladiatorCard() {
@@ -21,6 +31,7 @@
     card.classList.add("is-wip");
     card.removeAttribute("data-project");
     card.setAttribute("aria-label", "Gladiator Ascendant — case study in progress");
+    card.setAttribute("tabindex", "-1");
 
     const label = card.querySelector(".technical-label");
     const role = card.querySelector(".card-role");
@@ -138,6 +149,7 @@
   }
 
   function patchProjects() {
+    patchHomepage();
     patchGladiatorCard();
     patchWinterlight(document.querySelector(".wl-case-study"));
     patchRay(document.querySelector(".rd-case-study"));
@@ -147,6 +159,10 @@
 
   const style = document.createElement("style");
   style.textContent = `
+    .intro-contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .intro-contact a{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid var(--line);background:rgba(15,18,25,.58);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+    .intro-contact a:hover{border-color:var(--copper-bright);color:var(--paper)}
+    .intro-contact span{color:var(--violet)}
     .selected-card.is-wip{cursor:default}
     .selected-card.is-wip:hover,.selected-card.is-wip:focus-visible{transform:none;box-shadow:none;border-color:var(--line)}
     .selected-card.is-wip:hover .card-media img,.selected-card.is-wip:focus-visible .card-media img{transform:none;filter:none}
