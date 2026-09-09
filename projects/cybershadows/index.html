@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090b10" />
+    <meta name="description" content="CyberShadows — Unreal Engine character implementation and stylised rendering case study by Andrei-Constantin Purcăreață." />
+    <link rel="canonical" href="https://andcns.github.io/projects/cybershadows/" />
+    <title>CyberShadows — Andrei-Constantin Purcăreață</title>
+    <link rel="stylesheet" href="../../styles.css?v=10" />
+    <style>
+      .crawl-case-study{padding-block:54px 100px;max-width:980px}.crawl-case-study section{padding:34px 0;border-top:1px solid var(--line)}.crawl-case-study h2{font-size:clamp(2rem,5vw,4.5rem);letter-spacing:-.04em}.crawl-case-study h3{font-size:clamp(1.45rem,3vw,2.4rem);margin-bottom:14px}.crawl-case-study p,.crawl-case-study li{color:var(--paper-soft);line-height:1.7}.crawl-case-study strong{color:var(--paper)}.crawl-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:26px 0 44px}.crawl-meta div{padding:16px;border:1px solid var(--line);background:var(--ink-raised)}.crawl-meta span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}@media(max-width:720px){.crawl-meta{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="Back to portfolio"><span class="brand-copy"><span class="brand-name">Andrei-Constantin</span><span class="brand-role">Technical Artist · PCG</span></span></a>
+      <nav class="site-nav" aria-label="Project navigation"><a href="../../">Portfolio</a><a class="nav-cv" href="../../assets/files/Andrei-Purcareata-CV.pdf">CV ↗</a></nav>
+    </header>
+    <main class="shell crawl-case-study">
+      <p class="technical-label">Unreal Engine character implementation</p>
+      <h1>CyberShadows</h1>
+      <p class="intro-summary">A third-person action prototype combining original character art, stylised rendering, level/UI design and Unreal integration.</p>
+      <div class="crawl-meta">
+        <div><span>Role</span><strong>Character artist · Level assembly · Unreal integration</strong></div>
+        <div><span>Tools</span><strong>Unreal Engine 5 · Blender · Substance Painter</strong></div>
+        <div><span>Outcome</span><strong>Playable start-to-finish vertical slice</strong></div>
+      </div>
+
+      <section>
+        <p class="technical-label">01 · Project scope / Accountability</p>
+        <h2>Original character art and visual design carried into a playable Unreal slice.</h2>
+        <p>CyberShadows was my second-year Games Portfolio project: an anime-inspired third-person hack-and-slash set in a futuristic Japan. I owned the concept and visual direction, created the key character art and props, designed the level layout and UI, and integrated the work into a playable Unreal vertical slice.</p>
+        <h3>Original work / mine</h3>
+        <ul>
+          <li>Game concept, visual direction and level progression.</li>
+          <li>Keiko player character design, modelling, UVs and texturing.</li>
+          <li>Melee Rob enemy design, modelling and texturing.</li>
+          <li>Supporting props including the katana, torii gate, kunai and Asia-style lamp.</li>
+          <li>Level layout and scene assembly using a third-party modular environment kit.</li>
+          <li>Main menu, pause menu and in-game UI design.</li>
+        </ul>
+        <h3>Implementation / learning resources</h3>
+        <p>Player movement, stamina, dash, melee/ranged combat, target lock, damage systems, enemy AI, behaviour trees and the stylised shader foundations came from tutorials and university material. My work was adapting, connecting and debugging them inside CyberShadows rather than designing those architectures from scratch.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">02 · Character art / Engine setup</p>
+        <h2>Two original characters built for gameplay.</h2>
+        <p>Keiko and Melee Rob were created specifically for CyberShadows. I took both from original design and modelling through texturing, assisted rigging workflows and Unreal implementation.</p>
+        <p>I designed, modelled, UV-mapped and textured Keiko. AccuRig provided the base humanoid rig; I then brought the character into Unreal, configured the player-side setup and integrated the animation workflow. Melee Rob used a Mixamo rig/animation workflow before Unreal integration.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">03 · Technical art / Stylised rendering</p>
+        <h2>Adapting anime-style shading to the character pipeline.</h2>
+        <p>I wanted the characters to read more like 2D animation inside a 3D world. I implemented stepped cel shading and an inverted-hull outline from tutorial foundations, then tuned and integrated the setup on the project characters.</p>
+        <p>The material techniques came from tutorials; my contribution was integrating, tuning and applying them consistently to the characters and engine setup.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">04 · Level design / UI</p>
+        <h2>Assembling a readable combat route from a modular kit.</h2>
+        <p>The environment geometry came from a third-party modular kit. I used it to design the route, combat spaces and scene composition rather than relying on a preassembled map, with the cyberpunk/anime contrast carried by colour, character presentation and UI.</p>
+        <p>I designed the main menu, pause menu and in-game HUD, then implemented them around the tutorial-led gameplay systems. Music and sound effects were sourced from Pixabay.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">05 · Gameplay / Tutorial-led implementation</p>
+        <h2>Connecting learned systems into a functioning combat slice.</h2>
+        <p>The player and enemy frameworks were tutorial-led. My work here was adapting them to the project, connecting character, animation and UI assets, debugging integration issues and getting the separate systems operating together as a complete gameplay loop.</p>
+        <p>Practical Unreal exposure included Enhanced Input, Animation Blueprints, Montages, Actor Components, Interfaces, Structs / Enums, Behaviour Trees, Blackboards and EQS.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">06 · Outcome / Reflection</p>
+        <h2>Playable from start to finish, with the final art pass incomplete.</h2>
+        <p>The vertical slice has a working start-to-finish gameplay loop, including menus, combat encounters and win/lose states. The final section of the route remained greyboxed when development stopped, so the gameplay is further along than the environment presentation.</p>
+        <p>The most useful experience was the character-to-engine workflow: modelling, assisted rigging, animation setup, materials, gameplay integration and debugging. It also made the split in my interests clearer — I enjoyed the visual/technical boundary far more than gameplay programming itself.</p>
+      </section>
+    </main>
+  </body>
+</html>
