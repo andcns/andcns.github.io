@@ -6,13 +6,14 @@
     .lj-language-stage{margin:2rem 0 2.25rem;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:1rem;align-items:stretch}
     .lj-language-card{margin:0;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.025);overflow:hidden;min-width:0}
     .lj-language-card .zoomable-image{display:block;width:100%;height:100%;min-height:310px;background:#0f1116;border:0;padding:0;position:relative;overflow:hidden;cursor:zoom-in}
-    .lj-language-card img{display:block;width:100%;height:100%;min-height:310px;object-fit:contain;background:#0d0f13;image-rendering:auto}
+    .lj-language-card img{display:block;width:100%;height:100%;min-height:310px;object-fit:contain;background:#0d0f13;image-rendering:auto;filter:contrast(1.025) saturate(1.02)}
     .lj-language-card figcaption{padding:.8rem .9rem 1rem;border-top:1px solid rgba(255,255,255,.09);font-size:.82rem;line-height:1.45;color:var(--muted,#9ca0aa)}
     .lj-language-card figcaption strong{display:block;color:var(--text,#f4f1ea);font-size:.94rem;margin-bottom:.25rem}
     .lj-language-card.is-atlas img{object-fit:contain;background:#08090b}
     .lj-language-intro{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:1.25rem;margin-bottom:.2rem}
     .lj-language-intro h4{margin:.15rem 0 0;font-size:clamp(1.2rem,2.2vw,1.7rem)}
     .lj-language-intro p{margin:0;color:var(--muted,#9ca0aa);line-height:1.7}
+    .lj-case-study .lj-process-board img,.lj-case-study .lj-final-shot img{filter:contrast(1.025) saturate(1.015)}
     @media (max-width:840px){.lj-language-stage,.lj-language-intro{grid-template-columns:1fr}.lj-language-card .zoomable-image,.lj-language-card img{min-height:220px}}
   `;
   document.head.appendChild(style);
@@ -57,12 +58,32 @@
     if (!root || root.dataset.finalPass === 'true') return;
     root.dataset.finalPass = 'true';
 
-    const sections = root.querySelectorAll('.lj-section');
-    const system = Array.from(sections).find(s => s.querySelector('#lj-system-title'));
+    const sections = Array.from(root.querySelectorAll('.lj-section'));
+
+    const preprod = sections.find(s => s.querySelector('#lj-preprod-title'));
+    if (preprod) {
+      const title = preprod.querySelector('#lj-preprod-title');
+      const headCopy = preprod.querySelector('.lj-section-head > p:last-child');
+      if (title) title.textContent = 'From rough layout thinking to a working mobile interface.';
+      if (headCopy) headCopy.textContent = 'I began with rough notes around resource hierarchy, thumb-friendly navigation, customer orders and storage, then translated those ideas into an annotated screen mock-up before the systems were fully integrated. The finished Job Board shows the same approach carried into the live game.';
+      const processCaption = preprod.querySelector('.lj-process-board figcaption');
+      if (processCaption) processCaption.textContent = 'Pre-production UI mock-up — hierarchy, navigation and resource placement before final integration';
+      const finalCaption = preprod.querySelector('.lj-final-shot figcaption');
+      if (finalCaption) finalCaption.textContent = 'Final Job Board — implemented in the playable Unity build';
+      const carry = preprod.querySelector('.lj-copy-card');
+      if (carry) {
+        const carryTitle = carry.querySelector('h4');
+        const carryText = carry.querySelector('p:last-child');
+        if (carryTitle) carryTitle.textContent = 'Structure first, styling second.';
+        if (carryText) carryText.textContent = 'The early layout already established the resource bar, order area, storage access and route into the lumber yard. The styling changed heavily, but the hierarchy survived because it was solving the interaction problems before I worried about polish.';
+      }
+    }
+
+    const system = sections.find(s => s.querySelector('#lj-system-title'));
     if (system) {
       const title = system.querySelector('#lj-system-title');
       const headCopy = system.querySelector('.lj-section-head > p:last-child');
-      if (title) title.textContent = 'The first screen became a visual language, then a reusable UI kit.';
+      if (title) title.textContent = 'The first finished screen became a visual language, then a reusable UI kit.';
       if (headCopy) headCopy.textContent = 'The Storage screen was the point where the wood-frame language clicked. I carried those proportions, warm materials, outlined arrows and sign motifs into a reusable atlas, then adapted the same components across the rest of the player-facing UI in Unity.';
 
       const notes = system.querySelector('.lj-system-notes');
@@ -70,19 +91,22 @@
         const stage = document.createElement('div');
         stage.className = 'lj-language-stage';
         stage.innerHTML = `<div class="lj-language-intro"><div><p class="technical-label">Visual language / First established screen</p><h4>Storage set the tone.</h4></div><p>This was the first interface I pushed far enough to establish the look of the project. Instead of treating it as a one-off menu, I pulled the successful pieces back out into reusable components for later screens.</p></div>`;
-        stage.appendChild(mediaFigure(`${ROOT}storage-ui-final.b64.txt`, 'LumberJill Storage interface establishing the wood-themed UI language', 'Storage UI — visual language established', 'The first finished panel to lock in the wood framing, hanging sign, warm palette and inset presentation.'));
-        stage.appendChild(mediaFigure(`${ROOT}ui-atlas-final.b64.txt`, 'LumberJill reusable UI atlas with wood panels, arrows and symbols', 'Reusable UI atlas', 'Panels, arrows, symbols and navigation pieces extracted into a consistent kit for use across later interfaces.', 'is-atlas'));
+        stage.appendChild(mediaFigure(`${ROOT}storage-ui-display.b64.txt`, 'LumberJill Storage interface establishing the wood-themed UI language', 'Storage UI — visual language established', 'The first finished panel to lock in the wood framing, hanging sign, warm palette and inset presentation.'));
+        stage.appendChild(mediaFigure(`${ROOT}ui-atlas-display.b64.txt`, 'LumberJill reusable UI atlas with wood panels, arrows and symbols', 'Reusable UI atlas', 'Panels, arrows, symbols and navigation pieces extracted into a consistent kit for use across later interfaces.', 'is-atlas'));
         notes.before(stage);
       }
+
+      const note = system.querySelector('.lj-role-note p:last-child');
+      if (note) note.textContent = "This was one of the projects that made me stop treating implementation as something that happened after the art was finished. I used Unity's simulator to check UI scaling and readability, then kept iterating until the work made sense inside the live game rather than only in a mock-up.";
     }
 
-    const team = Array.from(sections).find(s => s.querySelector('#lj-team-title'));
+    const team = sections.find(s => s.querySelector('#lj-team-title'));
     if (team) {
       const p = team.querySelector('.lj-section-head > p:last-child');
       if (p) p.textContent = 'We attempted to work with Scrum through sprints, meetings, task ownership and a backlog. In practice we did not apply it consistently enough. Sprint goals were often loose, dependencies surfaced too late, and uneven participation and late hand-offs put additional pressure on delivery.';
     }
 
-    const reflection = Array.from(sections).find(s => s.querySelector('#lj-reflection-title'));
+    const reflection = sections.find(s => s.querySelector('#lj-reflection-title'));
     if (reflection) {
       const p = reflection.querySelector('.lj-section-head > p:last-child');
       if (p) p.textContent = 'The final build was not perfect: we overscoped, optimisation needed more work and a late shop-system regression blocked part of the tutorial. We still came very close to the intended vertical slice, and I am proud of the art, the visual consistency we achieved and my ability to keep adapting and integrating work as the project changed.';
