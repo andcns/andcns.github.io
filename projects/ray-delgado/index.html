@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090b10" />
+    <meta name="description" content="Ray Delgado — character art and animation pipeline case study by Andrei-Constantin Purcăreață." />
+    <link rel="canonical" href="https://andcns.github.io/projects/ray-delgado/" />
+    <title>Ray Delgado — Andrei-Constantin Purcăreață</title>
+    <link rel="stylesheet" href="../../styles.css?v=10" />
+    <style>
+      .crawl-case-study{padding-block:54px 100px;max-width:980px}.crawl-case-study section{padding:34px 0;border-top:1px solid var(--line)}.crawl-case-study h2{font-size:clamp(2rem,5vw,4.5rem);letter-spacing:-.04em}.crawl-case-study h3{font-size:clamp(1.45rem,3vw,2.4rem);margin-bottom:14px}.crawl-case-study p,.crawl-case-study li{color:var(--paper-soft);line-height:1.7}.crawl-case-study strong{color:var(--paper)}.crawl-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:26px 0 44px}.crawl-meta div{padding:16px;border:1px solid var(--line);background:var(--ink-raised)}.crawl-meta span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}@media(max-width:720px){.crawl-meta{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="Back to portfolio"><span class="brand-copy"><span class="brand-name">Andrei-Constantin</span><span class="brand-role">Technical Artist · PCG</span></span></a>
+      <nav class="site-nav" aria-label="Project navigation"><a href="../../">Portfolio</a><a class="nav-cv" href="../../assets/files/Andrei-Purcareata-CV.pdf">CV ↗</a></nav>
+    </header>
+    <main class="shell crawl-case-study">
+      <p class="technical-label">Character art · Animation pipeline</p>
+      <h1>Ray Delgado</h1>
+      <p class="intro-summary">A 1970s Miami private eye taken from sculpt and retopology through Substance texturing, mocap/Mixamo retargeting and Unity animation setup.</p>
+      <div class="crawl-meta">
+        <div><span>Role</span><strong>Character Artist · Animation Integration</strong></div>
+        <div><span>Tools</span><strong>Blender · Substance 3D Painter · Unity · Mixamo · Rokoko</strong></div>
+        <div><span>Outcome</span><strong>Game-ready character · ≈60K tris · Unity animation set</strong></div>
+      </div>
+
+      <section>
+        <p class="technical-label">01 · Animation showcase</p>
+        <h2>Ray in motion.</h2>
+        <p>A 59-second animation cut shows the implemented locomotion, weapon handling, crouch and cover set. The project then breaks down how I built the character and brought the animation pipeline together.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">02 · Character design</p>
+        <h2>Designing a 70s private eye.</h2>
+        <p>I wanted Ray to read clearly from a third-person camera: broad shapes, a sharp jaw, moustache, aviators and a loud floral shirt. I worked through the design on paper first, then used the blockout and sculpt to push the proportions before committing to topology.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">03 · Sculpt / Game-ready mesh</p>
+        <h2>From sculpt to game-ready mesh.</h2>
+        <p>This was the first project where sculpting became a real part of my workflow. I retopologised the final form by hand, kept extra loops around the face and main deformation areas, then unwrapped the mesh and baked the high-poly normal detail down to a roughly 60K-triangle game asset.</p>
+        <p><strong>Pipeline:</strong> Sculpt → Retopo → Bake. Primary tools were Blender and Substance Painter.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">04 · Cloth simulation / Materials</p>
+        <h2>Cloth simulation, then high-to-low baking.</h2>
+        <p>I used Blender cloth simulation to establish the shirt folds, then applied and retopologised the result. Most normal detail was baked from the high-poly meshes onto the low-poly character in Substance Painter, which I also used for the final PBR texturing.</p>
+        <p>I kept most small-form detail in the high-poly meshes and transferred it to the game asset through normal baking. The textures stay stylised, but fabric, denim, leather, metal and skin were designed to read as distinct materials at a glance.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">05 · Rigging / Retargeting / Unity</p>
+        <h2>Bringing different animation sources onto one character.</h2>
+        <p>The final character used a Mixamo humanoid rig. I combined Mixamo animations with tracker-based mocap, retargeted the captured clips onto Ray in Blender with Rokoko's retargeting add-on, then organised the full set in Unity using Animator layers.</p>
+        <p>I recorded tracker-based mocap for part of the set and used Mixamo where it made sense to fill out the library. Retargeting the captured clips in Blender gave me a clearer understanding of how animation from different sources can be prepared for one character before engine implementation.</p>
+      </section>
+
+      <section>
+        <p class="technical-label">06 · Reflection</p>
+        <h2>Why this project still matters to my Technical Art direction.</h2>
+        <p>I chose this module while I was still seriously considering character design and modelling, before I had fully committed to Technical Art. It gave me practical experience across a character pipeline I am still interested in.</p>
+        <p>It was the first time I used sculpting seriously in my workflow, and it pushed me into cloth simulation, character design, retopology, high-to-low baking, mocap retargeting and engine animation setup as one connected process.</p>
+        <p>Having worked through the character pipeline myself gives me useful context for future work around rigging, retargeting, animation systems and artist-facing character tools.</p>
+      </section>
+    </main>
+  </body>
+</html>
