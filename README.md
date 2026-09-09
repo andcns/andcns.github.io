@@ -1,14 +1,23 @@
-# Ray Delgado — final hireability pass
+# Andrei-Constantin Purcăreață — Portfolio
 
-Apply over the current website root after the Ray Delgado v3 update.
+Live portfolio: https://andcns.github.io/
 
-Only Ray-related content was changed:
-- tighter, recruiter-first copy
-- clearer ownership and end-to-end pipeline on the homepage card and case-study hero
-- animation + mocap sections consolidated to remove repetition
-- actual pipeline stated explicitly: Mixamo humanoid rig / Mixamo motions + tracker mocap / Rokoko retargeting in Blender / Unity Animator
-- Substance 3D Painter wording corrected to emphasise high-to-low normal baking and PBR texturing
-- early rig sketch clearly labelled as pre-production so it cannot be mistaken for the final rig
-- reflection shortened and tied to character-focused Technical Art without pretending the project was originally a TA project
+Personal portfolio for junior Technical Art, realtime 3D and procedural-workflow roles.
 
-No global styling, other projects, or media assets are changed by this patch.
+## Focus
+
+- Technical Art and realtime implementation
+- Procedural systems / PCG
+- 3D art pipelines
+- Artist-facing workflows
+- Unity and Unreal Engine
+
+## Selected work
+
+- **Project Winterlight** — runtime modern/retro presentation system, Unity integration and 3D authorship
+- **Ray Delgado** — end-to-end character and animation pipeline
+- **CyberShadows** — character art, stylised rendering and Unreal integration
+- **LumberJill: The RPG** — UI system, character art and Unity integration
+- **Gladiator Ascendant** — Global Game Jam project; full case study currently being rebuilt around recovered evidence
+
+The Romanian Countryside PCG project and supporting work are still in active development and are presented as work in progress on the site.
