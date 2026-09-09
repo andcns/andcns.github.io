@@ -49,13 +49,9 @@
     const featuredClass = project.featured ? " selected-card-featured" : "";
     const wipClass = project.wip ? " is-wip" : "";
     const cardNumber = String(index + 1).padStart(2, "0");
-    const projectAttr = project.wip ? "" : ` data-project="${project.slug}"`;
-    const disabledAttr = project.wip ? " disabled aria-disabled=\"true\"" : "";
     const ariaLabel = project.wip ? `${project.title} — case study in progress` : `Open ${project.title} case study`;
     const actionText = project.wip ? "Case study in progress" : "View case study ↗";
-
-    return `
-      <button class="selected-card${featuredClass}${wipClass}" type="button"${projectAttr}${disabledAttr} aria-label="${ariaLabel}">
+    const inner = `
         <span class="card-media">${projectMedia(project)}</span>
         <span class="card-shade"></span>
         <span class="card-number">${cardNumber}</span>
@@ -64,8 +60,13 @@
           <strong>${project.title}</strong>
           <span class="card-role">${project.role}</span>
         </span>
-        <span class="card-open" aria-hidden="true">${actionText}</span>
-      </button>`;
+        <span class="card-open" aria-hidden="true">${actionText}</span>`;
+
+    if (project.wip) {
+      return `<button class="selected-card${featuredClass}${wipClass}" type="button" disabled aria-disabled="true" aria-label="${ariaLabel}">${inner}</button>`;
+    }
+
+    return `<a class="selected-card${featuredClass}" href="${assetPrefix}/projects/${project.slug}/" data-project="${project.slug}" aria-label="${ariaLabel}" style="color:inherit;text-decoration:none">${inner}</a>`;
   }
 
   function otherCard(project) {
@@ -141,11 +142,16 @@
   }
 
   if (selectedGrid && content) {
-    selectedGrid.innerHTML = content.selectedWork.map(selectedCard).join("");
+    if (!selectedGrid.children.length) {
+      selectedGrid.innerHTML = content.selectedWork.map(selectedCard).join("");
+    }
 
     selectedGrid.addEventListener("click", (event) => {
       const card = event.target.closest("[data-project]");
-      if (card) openProject(card.dataset.project);
+      if (card) {
+        event.preventDefault();
+        openProject(card.dataset.project);
+      }
     });
   }
 
