@@ -21,6 +21,21 @@
     summary.after(links);
   }
 
+  function patchCardAffordances() {
+    document.querySelectorAll(".selected-card .card-number").forEach((number) => number.remove());
+
+    document.querySelectorAll("a.selected-card .card-open").forEach((open) => {
+      if (open.dataset.iconPass === "true") return;
+      open.dataset.iconPass = "true";
+      open.setAttribute("aria-hidden", "true");
+      open.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M8 16 16 8"></path>
+          <path d="M9 8h7v7"></path>
+        </svg>`;
+    });
+  }
+
   function patchGladiatorCard() {
     const card = [...document.querySelectorAll("[data-project]")].find((item) =>
       normalizeTitle(item.querySelector(".card-copy strong")?.textContent) === "gladiatorascendant"
@@ -151,6 +166,7 @@
   function patchProjects() {
     patchHomepage();
     patchGladiatorCard();
+    patchCardAffordances();
     patchWinterlight(document.querySelector(".wl-case-study"));
     patchRay(document.querySelector(".rd-case-study"));
     patchCyber(document.querySelector(".cs-case-study"));
@@ -163,6 +179,9 @@
     .intro-contact a{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid var(--line);background:rgba(15,18,25,.58);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
     .intro-contact a:hover{border-color:var(--copper-bright);color:var(--paper)}
     .intro-contact span{color:var(--violet)}
+    a.selected-card .card-open{top:18px;right:18px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);background:rgba(7,9,13,.62);color:var(--paper);opacity:1;transform:none;backdrop-filter:blur(10px);transition:border-color 240ms ease,background 240ms ease,transform 300ms cubic-bezier(.2,.75,.2,1),box-shadow 240ms ease}
+    a.selected-card .card-open svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    a.selected-card:hover .card-open,a.selected-card:focus-visible .card-open{border-color:var(--copper-bright);background:rgba(9,11,16,.82);box-shadow:0 0 0 1px rgba(168,76,255,.18),0 8px 24px rgba(0,0,0,.28);transform:translate(2px,-2px)}
     .selected-card.is-wip{cursor:default}
     .selected-card.is-wip:hover,.selected-card.is-wip:focus-visible{transform:none;box-shadow:none;border-color:var(--line)}
     .selected-card.is-wip:hover .card-media img,.selected-card.is-wip:focus-visible .card-media img{transform:none;filter:none}
