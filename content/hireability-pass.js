@@ -7,6 +7,7 @@
   }
 
   function patchHomepage() {
+    document.querySelectorAll(".section-header > .section-index").forEach((number) => number.remove());
     const intro = document.querySelector(".intro-copy");
     if (!intro || intro.querySelector(".intro-contact")) return;
     const summary = intro.querySelector(".intro-summary");
