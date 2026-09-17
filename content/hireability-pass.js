@@ -156,8 +156,8 @@
     .intro-contact a:hover{border-color:var(--copper-bright);color:var(--paper)}
     .intro-contact span{color:var(--violet)}
     a.selected-card .card-open{top:auto;right:18px;bottom:18px;width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);background:rgba(7,9,13,.62);color:var(--paper);opacity:1;transform:none;backdrop-filter:blur(10px);transition:border-color 240ms ease,background 240ms ease,transform 300ms cubic-bezier(.2,.75,.2,1),box-shadow 240ms ease}
-    a.selected-card .card-open .click-hand-icon{width:44px;height:44px;object-fit:contain;display:block;filter:drop-shadow(0 2px 5px rgba(0,0,0,.55));transition:transform 240ms ease,filter 240ms ease}
-    a.selected-card:hover .card-open .click-hand-icon,a.selected-card:focus-visible .card-open .click-hand-icon{transform:scale(1.08) rotate(-2deg);filter:drop-shadow(0 0 7px rgba(211,134,78,.45)) drop-shadow(0 2px 5px rgba(0,0,0,.5))}
+    a.selected-card .card-open .click-hand-icon{width:44px;height:44px;object-fit:contain;display:block;transform:rotate(-28deg);transform-origin:58% 62%;filter:drop-shadow(0 2px 5px rgba(0,0,0,.55));transition:transform 240ms ease,filter 240ms ease}
+    a.selected-card:hover .card-open .click-hand-icon,a.selected-card:focus-visible .card-open .click-hand-icon{transform:scale(1.08) rotate(-24deg);filter:drop-shadow(0 0 7px rgba(211,134,78,.45)) drop-shadow(0 2px 5px rgba(0,0,0,.5))}
     a.selected-card:hover .card-open,a.selected-card:focus-visible .card-open{border-color:var(--copper-bright);background:rgba(9,11,16,.82);box-shadow:0 0 0 1px rgba(168,76,255,.18),0 8px 24px rgba(0,0,0,.28);transform:translate(2px,-2px)}
     .selected-card .card-media img[src*="/colosseum/card.webp"]{object-fit:cover;object-position:50% 48%;background:#030303}
     @media(max-width:720px){

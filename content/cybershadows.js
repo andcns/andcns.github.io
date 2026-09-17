@@ -257,7 +257,7 @@
       raydelgado: "Character Art",
       cybershadows: "Character Art · Level Design · UE",
       lumberjilltherpg: "UI Design · Character Art",
-      gladiatorascendant: "Visual Direction · Character Art · Procedural"
+      colosseumascendant: "Visual Direction · Character Art · Procedural"
     };
 
     document.querySelectorAll("[data-project]").forEach((card) => {
