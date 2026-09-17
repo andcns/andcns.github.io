@@ -7,7 +7,21 @@
     <meta name="description" content="About technical artist Andrei-Constantin Purcăreață." />
     <title>About — Andrei-Constantin Purcăreață</title>
     <link rel="stylesheet" href="../styles.css?v=11" />
-    <style>@media(max-width:860px){body::before{position:absolute}.site-header{-webkit-backdrop-filter:none;backdrop-filter:none;background:#090b10}.about-link-icon{filter:none}}</style>
+    <style>
+      @media(max-width:860px){body::before{position:absolute}.site-header{-webkit-backdrop-filter:none;backdrop-filter:none;background:#090b10}.about-link-icon{filter:none}}
+      .artist-toolkit{padding-top:0;padding-bottom:clamp(70px,8vw,110px)}
+      .toolkit-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.65fr);gap:clamp(28px,7vw,100px);align-items:end;padding-top:26px;margin-bottom:28px;border-top:1px solid var(--line)}
+      .toolkit-heading h2{margin:5px 0 0;font-size:clamp(2rem,4vw,3.8rem);letter-spacing:-.04em}
+      .toolkit-heading p:last-child{max-width:440px;margin:0 0 5px;color:var(--paper-soft);font-size:.92rem}
+      .toolkit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+      .tool-item{min-height:72px;display:flex;align-items:center;gap:15px;padding:15px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(15,18,25,.48);transition:background 180ms ease,border-color 180ms ease}
+      .tool-item:hover{background:rgba(168,76,255,.045);border-color:rgba(223,169,111,.28)}
+      .tool-logo{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px}
+      .tool-logo img{width:30px;height:30px;object-fit:contain;filter:grayscale(1) brightness(1.55);opacity:.9}
+      .tool-logo-fallback{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(223,169,111,.55);border-radius:5px;color:var(--copper-bright);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.62rem;font-weight:800;letter-spacing:.02em}
+      .tool-name{color:var(--paper);font-family:var(--display);font-size:.9rem;font-weight:700;letter-spacing:.025em}
+      @media(max-width:700px){.toolkit-heading{grid-template-columns:1fr}.toolkit-grid{grid-template-columns:1fr}.tool-item{min-height:64px}}
+    </style>
     <script src="../site.js?v=11" defer></script>
   </head>
   <body>
@@ -20,6 +34,26 @@
     <main id="about" class="inner-page">
       <section class="page-intro shell" aria-labelledby="about-title"><p class="technical-label">Profile</p><div class="page-intro-grid"><h1 id="about-title">About</h1><p>Technical art, realtime 3D and procedural workflows built on a broad art-production background.</p></div></section>
       <section class="section shell about page-about" aria-label="About Andrei-Constantin"><div class="about-grid"><p class="about-lead">I’m Andrei-Constantin, a Technical Artist with a background across 3D art, engine implementation and procedural workflows.</p><div class="about-copy"><p>I graduated from the University of Greenwich with a BSc (Hons) in Games Design and Development, achieving a 2:1. The degree was awarded on 18 August 2026.</p><p>I have worked across characters, environments, UI, VFX and realtime implementation. The part I enjoy most is turning a visual problem into a system that is controllable, reusable and practical for artists.</p><p>I’m based in London and looking for junior Technical Art, realtime 3D and related roles across the UK.</p><div class="about-links"><a href="mailto:andreipurcareata@gmail.com">Email <img class="about-link-icon" src="../assets/ui/click-hand-copper.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></a><a href="https://www.linkedin.com/in/andreicns">LinkedIn <img class="about-link-icon" src="../assets/ui/click-hand-copper.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></a><a href="../assets/files/Andrei-Purcareata-CV.pdf?v=20260917">Download CV <img class="about-link-icon" src="../assets/ui/click-hand-copper.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></a><a href="../assets/files/Andrei-Purcareata-Degree-Certificate.pdf" target="_blank" rel="noopener">Degree certificate <img class="about-link-icon" src="../assets/ui/click-hand-copper.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></a></div></div></div></section>
+      <section class="shell artist-toolkit" aria-labelledby="toolkit-title">
+        <div class="toolkit-heading"><div><p class="technical-label">Workflow</p><h2 id="toolkit-title">Artist’s Toolkit</h2></div><p>The software I reach for across procedural art, realtime implementation, asset production and collaboration.</p></div>
+        <div class="toolkit-grid" role="list">
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/blender.svg" alt="" /></span><span class="tool-name">Blender</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/unity.svg" alt="" /></span><span class="tool-name">Unity</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/unrealengine.svg" alt="" /></span><span class="tool-name">Unreal Engine</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobesubstance3dpainter.svg" alt="" /></span><span class="tool-name">Substance 3D Painter</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/houdini.svg" alt="" /></span><span class="tool-name">Houdini</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobepremierepro.svg" alt="" /></span><span class="tool-name">Premiere Pro</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobephotoshop.svg" alt="" /></span><span class="tool-name">Photoshop</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobeillustrator.svg" alt="" /></span><span class="tool-name">Illustrator</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/trello.svg" alt="" /></span><span class="tool-name">Trello</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" alt="" /></span><span class="tool-name">GitHub</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" alt="" /></span><span class="tool-name">GitHub Desktop</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gitkraken.svg" alt="" /></span><span class="tool-name">GitKraken</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><span class="tool-logo-fallback" aria-hidden="true">MX</span></span><span class="tool-name">Mixamo</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><span class="tool-logo-fallback" aria-hidden="true">RK</span></span><span class="tool-name">Rokoko</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><span class="tool-logo-fallback" aria-hidden="true">AR</span></span><span class="tool-name">AccuRIG</span></div>
+        </div>
+      </section>
     </main>
     <footer class="site-footer shell"><span>Andrei-Constantin Purcăreață</span><span>Technical Art · PCG · Realtime 3D</span><span>© 2026</span></footer>
   </body>
