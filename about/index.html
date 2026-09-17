@@ -20,9 +20,9 @@
       .tool-logo img{width:32px;height:32px;object-fit:contain;filter:brightness(0) saturate(100%) invert(74%) sepia(35%) saturate(707%) hue-rotate(345deg) brightness(97%) contrast(91%);opacity:.98}
       .tool-logo svg{width:34px;height:34px;display:block;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
       .tool-logo svg .fill{fill:currentColor;stroke:none}
-      .tool-logo svg text{fill:currentColor;stroke:none;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:8px;font-weight:800;letter-spacing:-.4px;text-anchor:middle}
       .tool-name{color:var(--paper);font-family:var(--display);font-size:.9rem;font-weight:700;letter-spacing:.025em}
-      @media(max-width:700px){.toolkit-heading{grid-template-columns:1fr}.toolkit-grid{grid-template-columns:1fr}.tool-item{min-height:68px;padding:14px 18px}.tool-logo{width:36px;height:36px;flex-basis:36px}.tool-logo img{width:31px;height:31px}}
+      @media(max-width:700px){.artist-toolkit{width:calc(100% - 40px)}.toolkit-heading{grid-template-columns:1fr;gap:12px;margin-bottom:20px}.toolkit-heading p:last-child{font-size:.86rem}.toolkit-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1px}.tool-item{min-width:0;min-height:72px;gap:11px;padding:13px 12px}.tool-logo{width:30px;height:30px;flex-basis:30px}.tool-logo img,.tool-logo svg{width:27px;height:27px}.tool-name{min-width:0;font-size:.76rem;line-height:1.2;letter-spacing:.01em}}
+      @media(max-width:390px){.tool-item{gap:9px;padding-inline:10px}.tool-name{font-size:.71rem}}
     </style>
     <script src="../site.js?v=11" defer></script>
   </head>
@@ -40,20 +40,20 @@
         <div class="toolkit-heading"><div><p class="technical-label">Workflow</p><h2 id="toolkit-title">Artist’s Toolkit</h2></div><p>The software I reach for across procedural art, realtime implementation, asset production and collaboration.</p></div>
         <div class="toolkit-grid" role="list">
           <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/blender.svg" alt="" /></span><span class="tool-name">Blender</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/unity.svg" alt="" /></span><span class="tool-name">Unity</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/unrealengine.svg" alt="" /></span><span class="tool-name">Unreal Engine</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobesubstance3dpainter.svg" alt="" /></span><span class="tool-name">Substance 3D Painter</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/houdini.svg" alt="" /></span><span class="tool-name">Houdini</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobepremierepro.svg" alt="" /></span><span class="tool-name">Premiere Pro</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="13"/><circle cx="18" cy="5" r="1.8" class="fill"/><circle cx="7" cy="27" r="1.8" class="fill"/><circle cx="29" cy="27" r="1.8" class="fill"/><path d="M12 13.5l5-3 7 4-5 3-7-4zm0 0v7l7 4 5-3v-7m-12 6l7-3"/></svg></span><span class="tool-name">Substance Painter</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M9 8h18l2 4v16H7V12l2-4z"/><path d="M18 4v6M4 18h5M27 18h5"/><path d="M12 14l6-3 6 3-6 3-6-3zm0 0v7l6 3 6-3v-7m-12 7l6-4"/></svg></span><span class="tool-name">Substance Designer</span></div>
           <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobephotoshop.svg" alt="" /></span><span class="tool-name">Photoshop</span></div>
           <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobeillustrator.svg" alt="" /></span><span class="tool-name">Illustrator</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/trello.svg" alt="" /></span><span class="tool-name">Trello</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" alt="" /></span><span class="tool-name">GitHub</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="3.5" y="5" width="29" height="22" rx="2.5"/><path d="M13 31h10M18 27v4"/><circle cx="18" cy="16" r="6.2"/><path d="M14.5 14.5l1-3 2.5 1 2.5-1 1 3M14.2 17.2c1.2 1.8 2.4 2.5 3.8 2.5s2.6-.7 3.8-2.5"/></svg></span><span class="tool-name">GitHub Desktop</span></div>
-          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gitkraken.svg" alt="" /></span><span class="tool-name">GitKraken</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/adobepremierepro.svg" alt="" /></span><span class="tool-name">Premiere Pro</span></div>
           <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 26V10l7-4 6 4 6-4 7 4v16l-7 4-6-4-6 4z"/><path d="M12 6v20M24 6v20M12 14l6 4 6-4M12 22l6-4 6 4"/></svg></span><span class="tool-name">Mixamo</span></div>
           <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="13"/><circle cx="18" cy="18" r="5"/><path d="M18 5v8M18 23v8M5 18h8M23 18h8M8.8 8.8l5.7 5.7M21.5 21.5l5.7 5.7"/></svg></span><span class="tool-name">Rokoko</span></div>
           <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="8" r="3"/><path d="M18 11v9M11 15l7 3 7-3M18 20l-6 10M18 20l6 10"/><circle cx="11" cy="15" r="1.5" class="fill"/><circle cx="25" cy="15" r="1.5" class="fill"/><circle cx="12" cy="30" r="1.5" class="fill"/><circle cx="24" cy="30" r="1.5" class="fill"/></svg></span><span class="tool-name">AccuRIG</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/unity.svg" alt="" /></span><span class="tool-name">Unity</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/unrealengine.svg" alt="" /></span><span class="tool-name">Unreal Engine</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg" alt="" /></span><span class="tool-name">GitHub</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="3.5" y="5" width="29" height="22" rx="2.5"/><path d="M13 31h10M18 27v4"/><circle cx="18" cy="16" r="6.2"/><path d="M14.5 14.5l1-3 2.5 1 2.5-1 1 3M14.2 17.2c1.2 1.8 2.4 2.5 3.8 2.5s2.6-.7 3.8-2.5"/></svg></span><span class="tool-name">GitHub Desktop</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/gitkraken.svg" alt="" /></span><span class="tool-name">GitKraken</span></div>
+          <div class="tool-item" role="listitem"><span class="tool-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/trello.svg" alt="" /></span><span class="tool-name">Trello</span></div>
         </div>
       </section>
     </main>
