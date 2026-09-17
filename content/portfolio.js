@@ -43,14 +43,14 @@ window.PORTFOLIO_CONTENT = {
       image: "./assets/images/lumberjill/ui.webp"
     },
     {
-      slug: "gladiator-ascendant",
-      title: "Gladiator Ascendant",
+      slug: "colosseum-ascendant",
+      title: "Colosseum Ascendant",
       label: "Global Game Jam 2026 · Visual direction · Procedural workflow",
       role: "Visual direction · Character art · Procedural environment workflow",
       tools: "Blender · Geometry Nodes · Unity",
       outcome: "Playable team prototype · Module grade 85",
       summary: "A PSX-inspired 2.5D arena prototype where I led the visual direction, authored four low-poly character variants and used reusable/procedural workflows to speed up production.",
-      image: "./assets/images/gladiator/hero.webp"
+      image: "./assets/images/colosseum/card.webp"
     }
   ],
   otherWork: [
