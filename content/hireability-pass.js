@@ -30,9 +30,10 @@
       open.setAttribute("aria-hidden", "true");
       open.innerHTML = `
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M7.5 11.5V4.5a2 2 0 0 1 4 0V10"></path>
-          <path d="M11.5 10V7.5a2 2 0 0 1 4 0V10.5"></path>
-          <path d="M15.5 10.5V9a2 2 0 0 1 4 0v5c0 4.4-3.6 8-8 8h-1.2a7 7 0 0 1-5.7-2.9L2.8 16.6a2 2 0 0 1 3.1-2.5l1.6 2.1v-4.7"></path>
+          <path d="M9.5 11.5V6.8a1.6 1.6 0 0 1 3.2 0v4.3"></path>
+          <path d="M12.7 10.5V5.7a1.6 1.6 0 0 1 3.2 0v5.2"></path>
+          <path d="M15.9 10.6V7.3a1.6 1.6 0 0 1 3.2 0v6.2"></path>
+          <path d="M9.5 11.5 7.8 9.8a1.7 1.7 0 0 0-2.4 2.4l4.8 5.1a5.4 5.4 0 0 0 4 1.7h.8a4.1 4.1 0 0 0 4.1-4.1v-1.4"></path>
         </svg>`;
     });
   }
@@ -180,20 +181,18 @@
     .intro-contact a{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid var(--line);background:rgba(15,18,25,.58);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
     .intro-contact a:hover{border-color:var(--copper-bright);color:var(--paper)}
     .intro-contact span{color:var(--violet)}
-    a.selected-card .card-open{top:18px;right:18px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);background:rgba(7,9,13,.62);color:var(--paper);opacity:1;transform:none;backdrop-filter:blur(10px);transition:border-color 240ms ease,background 240ms ease,transform 300ms cubic-bezier(.2,.75,.2,1),box-shadow 240ms ease}
-    a.selected-card:not(.selected-card-featured) .card-open{top:auto;right:18px;bottom:18px}
-    a.selected-card .card-open svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    a.selected-card .card-open{top:auto;right:18px;bottom:18px;width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);background:rgba(7,9,13,.62);color:var(--paper);opacity:1;transform:none;backdrop-filter:blur(10px);transition:border-color 240ms ease,background 240ms ease,transform 300ms cubic-bezier(.2,.75,.2,1),box-shadow 240ms ease}
+    a.selected-card .card-open svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
     a.selected-card:hover .card-open,a.selected-card:focus-visible .card-open{border-color:var(--copper-bright);background:rgba(9,11,16,.82);box-shadow:0 0 0 1px rgba(168,76,255,.18),0 8px 24px rgba(0,0,0,.28);transform:translate(2px,-2px)}
-    .selected-card .card-media img[src*="/gladiator/"]{object-fit:contain;object-position:50% 50%;background:#030303}
-    @media(max-width:720px){
-      a.selected-card:not(.selected-card-featured) .card-open{right:10px;bottom:10px;width:36px;height:36px}
-      a.selected-card:not(.selected-card-featured) .card-open svg{width:17px;height:17px}
-      a.selected-card:not(.selected-card-featured) .card-copy{padding-right:42px}
-    }
     .selected-card.is-wip{cursor:default}
     .selected-card.is-wip:hover,.selected-card.is-wip:focus-visible{transform:none;box-shadow:none;border-color:var(--line)}
     .selected-card.is-wip:hover .card-media img,.selected-card.is-wip:focus-visible .card-media img{transform:none;filter:none}
     .selected-card.is-wip:hover .card-copy,.selected-card.is-wip:focus-visible .card-copy{transform:none}
+    @media(max-width:720px){
+      a.selected-card .card-open{right:10px;bottom:10px;width:42px;height:42px}
+      a.selected-card .card-open svg{width:20px;height:20px}
+      a.selected-card:not(.selected-card-featured) .card-copy{padding-right:58px}
+    }
     .selected-card.is-wip .card-open{opacity:1;transform:none;color:var(--paper-soft)}
   `;
   document.head.appendChild(style);
