@@ -19,7 +19,7 @@
     const imagePath = resolveImagePath(path);
     return `
       <button class="zoomable-image ${className}" type="button" data-zoom-src="${imagePath}" data-zoom-caption="${title}" aria-label="Enlarge ${title} image">
-        <img src="${imagePath}" alt="${title}" loading="lazy" />
+        <img src="${imagePath}" alt="${title}" loading="lazy" decoding="async" fetchpriority="low" />
         <span class="zoom-hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" focusable="false">
             <circle cx="10.5" cy="10.5" r="6.5"></circle>
@@ -35,7 +35,7 @@
     if (project.image) {
       const imagePath = resolveImagePath(project.image);
       if (zoomable) return zoomableMedia(project.image, `${project.title} project preview`, className);
-      return `<img src="${imagePath}" alt="${project.title} project preview" loading="lazy" />`;
+      return `<img src="${imagePath}" alt="${project.title} project preview" loading="lazy" decoding="async" />`;
     }
 
     return `
@@ -133,19 +133,13 @@
     if (updateHistory) {
       const url = new URL(window.location.href);
       url.searchParams.delete("project");
-      if (history.state && history.state.project) {
-        history.back();
-      } else {
-        history.replaceState({}, "", url);
-      }
+      if (history.state && history.state.project) history.back();
+      else history.replaceState({}, "", url);
     }
   }
 
   if (selectedGrid && content) {
-    if (!selectedGrid.children.length) {
-      selectedGrid.innerHTML = content.selectedWork.map(selectedCard).join("");
-    }
-
+    if (!selectedGrid.children.length) selectedGrid.innerHTML = content.selectedWork.map(selectedCard).join("");
     selectedGrid.addEventListener("click", (event) => {
       const card = event.target.closest("[data-project]");
       if (card) {
@@ -155,25 +149,16 @@
     });
   }
 
-  if (otherGrid && content) {
-    otherGrid.innerHTML = content.otherWork.map(otherCard).join("");
-  }
+  if (otherGrid && content) otherGrid.innerHTML = content.otherWork.map(otherCard).join("");
 
   if (dialog && closeButton) {
     closeButton.addEventListener("click", () => closeProject());
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) closeProject();
-    });
-    dialog.addEventListener("cancel", (event) => {
-      event.preventDefault();
-      closeProject();
-    });
-
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) closeProject(); });
+    dialog.addEventListener("cancel", (event) => { event.preventDefault(); closeProject(); });
     window.addEventListener("popstate", () => {
       const project = new URL(window.location.href).searchParams.get("project");
       project ? openProject(project, false) : closeProject(false);
     });
-
     const requestedProject = new URL(window.location.href).searchParams.get("project");
     if (requestedProject) openProject(requestedProject, false);
   }
@@ -184,12 +169,15 @@
       menuButton.setAttribute("aria-expanded", String(!open));
       nav.classList.toggle("site-nav-open", !open);
     });
-
     nav.addEventListener("click", () => {
       menuButton.setAttribute("aria-expanded", "false");
       nav.classList.remove("site-nav-open");
     });
   }
+
+  // Lightweight pages (About / Current Project) do not need a dialog/lightbox tree.
+  // Only initialise the lightbox when zoomable media is actually present.
+  if (!document.querySelector("[data-zoom-src]")) return;
 
   const lightbox = document.createElement("dialog");
   lightbox.className = "image-lightbox";
@@ -197,7 +185,7 @@
   lightbox.innerHTML = `
     <button class="lightbox-close" type="button" aria-label="Close expanded image">Close <span aria-hidden="true">×</span></button>
     <figure class="lightbox-figure">
-      <img src="" alt="" />
+      <img src="" alt="" decoding="async" />
       <figcaption></figcaption>
     </figure>`;
   document.body.append(lightbox);
@@ -230,17 +218,9 @@
 
   document.addEventListener("click", (event) => {
     const zoomTarget = event.target.closest("[data-zoom-src]");
-    if (zoomTarget) {
-      openLightbox(zoomTarget.dataset.zoomSrc, zoomTarget.dataset.zoomCaption || "Expanded project image");
-    }
+    if (zoomTarget) openLightbox(zoomTarget.dataset.zoomSrc, zoomTarget.dataset.zoomCaption || "Expanded project image");
   });
-
   lightboxClose.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) closeLightbox();
-  });
-  lightbox.addEventListener("cancel", (event) => {
-    event.preventDefault();
-    closeLightbox();
-  });
+  lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+  lightbox.addEventListener("cancel", (event) => { event.preventDefault(); closeLightbox(); });
 })();
