@@ -192,11 +192,7 @@
 
     const isColosseum = normalizeTitle(title.textContent) === "colosseumascendant";
     if (isColosseum) {
-<<<<<<< Updated upstream
-      hero.innerHTML = zoomImage(media.hero, "Masked Colosseum Ascendant boss character", "ga-hero-image");
-=======
       hero.innerHTML = zoomImage(media.menu, "Colosseum Ascendant main menu screen", "ga-hero-image");
->>>>>>> Stashed changes
       label.textContent = "Global Game Jam 2026 / Visual direction / Procedural workflow";
       summary.textContent = "A PSX-inspired 2.5D arena prototype where I led the visual direction, authored four low-poly character variants and used reusable/procedural workflows to speed up production.";
       meta.innerHTML = `
