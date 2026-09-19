@@ -1,4 +1,12 @@
 (function () {
+  // Cloudflare Web Analytics
+  if (!document.querySelector('script[data-cf-beacon]')) {
+    const analytics = document.createElement('script');
+    analytics.type = 'module';
+    analytics.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    analytics.dataset.cfBeacon = '{"token":"64a1c27a9a174abaadc57737e68e8820"}';
+    document.head.appendChild(analytics);
+  }
   const content = window.PORTFOLIO_CONTENT;
   const selectedGrid = document.querySelector("#selected-grid");
   const otherGrid = document.querySelector("#other-grid");
